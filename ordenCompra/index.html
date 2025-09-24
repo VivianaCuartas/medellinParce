@@ -7,26 +7,26 @@
   <link rel="stylesheet" href="../ordenCompra/styleOrdenCompra.css">
 </head>
 <body>
-  <header class="navbar">
-    <div class="logo">
+  <header id="navbar">
+    <div id="logo">
         <img src="../ordenCompra/logo.jpeg" alt="logo">
     </div>
-    <nav>
+    <nav id="nav-links">
       <a href="#">Productos</a>
       <a href="#">Blog</a>
       <a href="#">Nosotros</a>
-      <button class="btn">Register</button>
-      <button class="btn-outline">Iniciar Sesión</button>
+      <button id="btn-register">Register</button>
+      <button id="btn-login">Iniciar Sesión</button>
     </nav>
   </header>
 
-  <main class="contenedor">
-    <section class="factura">
-      <h2>Resumen de compra</h2>
-      <small>#Factura</small>
+  <main id="contenedor">
+    <section id="factura">
+      <h2 id="titulo-factura">Resumen de compra</h2>
+      <small id="numero-factura">#Factura</small>
 
       <!-- Información del cliente -->
-      <div class="cliente-info">
+      <div id="cliente-info">
         <h3>🧑 Información del cliente</h3>
         <p><strong>Nombre:</strong> Juan Pérez</p>
         <p><strong>Documento:</strong> 123456789</p>
@@ -35,9 +35,9 @@
       </div>
 
       <!-- Productos añadidos -->
-      <div class="productos">
+      <div id="productos">
         <h3>📦 Productos añadidos</h3>
-        <table>
+        <table id="tabla-productos">
           <thead>
             <tr>
               <th>Producto</th>
@@ -52,39 +52,39 @@
               <td>Camisa Mujer</td>
               <td>$10.000</td>
               <td>
-                <button class="cantidad-btn">-</button>
+                <button class="btn-cantidad">-</button>
                 1
-                <button class="cantidad-btn">+</button>
+                <button class="btn-cantidad">+</button>
               </td>
               <td>$240.000</td>
-              <td><button class="eliminar">🗑</button></td>
+              <td><button class="btn-eliminar">🗑</button></td>
             </tr>
             <tr>
               <td>Camisa Hombre</td>
               <td>$44.000</td>
               <td>
-                <button class="cantidad-btn">-</button>
+                <button class="btn-cantidad">-</button>
                 4
-                <button class="cantidad-btn">+</button>
+                <button class="btn-cantidad">+</button>
               </td>
               <td>$50.000</td>
-              <td><button class="eliminar">🗑</button></td>
+              <td><button class="btn-eliminar">🗑</button></td>
             </tr>
           </tbody>
         </table>
       </div>
 
       <!-- Totales -->
-      <div class="totales">
+      <div id="totales">
         <p><strong>Subtotal:</strong> $290.000</p>
         <p><strong>Descuento (20%):</strong> -$58.000</p>
         <p><strong>IVA (19%):</strong> $44.180</p>
-        <h3>TOTAL A PAGAR: $276.180</h3>
+        <h3 id="total-pagar">TOTAL A PAGAR: $276.180</h3>
       </div>
 
-      <button class="btn-finalizar">Finalizar compra</button>
+      <button id="btn-finalizar">Finalizar compra</button>
     </section>
   </main>
 </body>
-<script src="../ordenCompra/app.js"></script>"></script>
+<script src="../ordenCompra/app.js"></script>
 </html>

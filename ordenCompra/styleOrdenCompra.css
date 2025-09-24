@@ -7,7 +7,7 @@ body {
 }
 
 /* Navbar */
-.navbar {
+#navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,27 +16,22 @@ body {
   color: white;
 }
 
-/* .navbar .logo {
-  font-weight: bold;
-  font-size: 18px;
-} */
-
-img {
+#logo img {
   width: 200px;
   height: 100px;
   margin-top: 10px;
   margin-left: 20px;
 }
 
-.navbar nav a {
+#nav-links a {
   margin: 0 10px;
   text-decoration: none;
   color: white;
   font-size: 14px;
 }
 
-.navbar .btn,
-.navbar .btn-outline {
+#btn-register,
+#btn-login {
   margin-left: 10px;
   padding: 8px 15px;
   border-radius: 20px;
@@ -44,26 +39,26 @@ img {
   cursor: pointer;
 }
 
-.navbar .btn {
+#btn-register {
   background: #8d9c90;
   border: none;
   color: white;
 }
 
-.navbar .btn-outline {
+#btn-login {
   background: transparent;
   border: 1px solid white;
   color: white;
 }
 
 /* Contenedor principal */
-.contenedor {
+#contenedor {
   display: flex;
   justify-content: center;
   padding: 30px;
 }
 
-.factura {
+#factura {
   background: rgba(90, 106, 95, 0.45);
   border-radius: 15px;
   padding: 25px;
@@ -72,12 +67,12 @@ img {
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.factura h2 {
+#titulo-factura {
   text-align: center;
   color: #6d6e5e;
 }
 
-.factura small {
+#numero-factura {
   display: block;
   text-align: center;
   margin-bottom: 20px;
@@ -85,7 +80,7 @@ img {
 }
 
 /* Cliente info */
-.cliente-info {
+#cliente-info {
   margin-bottom: 20px;
   background: #e9ebe6;
   padding: 15px;
@@ -93,24 +88,24 @@ img {
 }
 
 /* Productos */
-.productos table {
+#tabla-productos {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
 }
 
-.productos thead {
+#tabla-productos thead {
   background: #8B8A73;
   color: white;
 }
 
-.productos th, .productos td {
+#tabla-productos th, #tabla-productos td {
   padding: 12px;
   text-align: center;
   border-bottom: 1px solid #ccc;
 }
 
-.cantidad-btn {
+.btn-cantidad {
   background: #8d9c90;
   border: none;
   padding: 5px 10px;
@@ -120,11 +115,11 @@ img {
   margin: 0 5px;
 }
 
-.cantidad-btn:hover {
+.btn-cantidad:hover {
   background: #6b7a6e;
 }
 
-.eliminar {
+.btn-eliminar {
   background: transparent;
   border: none;
   font-size: 18px;
@@ -132,20 +127,20 @@ img {
 }
 
 /* Totales */
-.totales {
+#totales {
   background: #e9ebe6;
   padding: 15px;
   border-radius: 10px;
   margin-bottom: 20px;
 }
 
-.totales h3 {
+#totales h3 {
   margin-top: 10px;
   color: #324d3d;
 }
 
 /* Botón Finalizar */
-.btn-finalizar {
+#btn-finalizar {
   display: block;
   width: 100%;
   padding: 15px;
@@ -157,6 +152,13 @@ img {
   cursor: pointer;
 }
 
-.btn-finalizar:hover {
+#btn-finalizar:hover {
   background: #4a564e;
+}
+
+img {
+  width: 200px;
+  height: 100px;
+  margin-top: 10px;
+  margin-left: 20px;
 }
