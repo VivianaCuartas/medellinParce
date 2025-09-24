@@ -1,12 +1,12 @@
-// Datos iniciales del carrito (se pueden cargar dinámicamente o desde localStorage)
+// Datos iniciales del carrito
 let carrito = [
   { id: 1, nombre: "Camisa Mujer", precio: 10000, cantidad: 1 },
   { id: 2, nombre: "Camisa Hombre", precio: 44000, cantidad: 4 }
 ];
 
 // Configuración de impuestos y descuentos
-const DESCUENTO = 0.20; // 20%
-const IVA = 0.19;       // 19%
+const DESCUENTO = 0.20; 
+const IVA = 0.19;       
 
 // Renderizar carrito en la tabla
 function renderCarrito() {
@@ -62,33 +62,31 @@ function calcularTotales() {
   `;
 }
 
-// Finalizar compra
+// Finalizar compra usando la clase Orden
 document.getElementById("btn-finalizar").addEventListener("click", () => {
   if (carrito.length === 0) {
     alert("El carrito está vacío.");
     return;
   }
 
-  const orden = {
-    numeroOrden: Date.now(),
-    cliente: {
-      nombre: "Juan Pérez",
-      documento: "123456789",
-      email: "juanperez@mail.com",
-      telefono: "3012345678"
-    },
-    productos: carrito,
-    fecha: new Date().toLocaleString(),
-    subtotal: carrito.reduce((acc, prod) => acc + prod.precio * prod.cantidad, 0),
-    descuento: DESCUENTO,
-    iva: IVA,
-    estado: "Confirmada"
+  // Simulamos un cliente
+  const cliente = {
+    nombre: "Juan Pérez",
+    documento: "123456789",
+    email: "juanperez@mail.com",
+    telefono: "3012345678"
   };
 
-  localStorage.setItem(`orden_${orden.numeroOrden}`, JSON.stringify(orden));
+  // Creamos la orden usando la clase Orden (orden.js)
+  const numeroOrden = Date.now();
+  const orden = new Orden(numeroOrden, cliente, carrito);
 
-  alert(`✅ Orden generada con éxito. Número de orden: ${orden.numeroOrden}`);
-  carrito = [];
+  orden.generarOrden(); // guarda en localStorage
+
+  const resumen = orden.mostrarResumen();
+  alert(`✅ Orden #${resumen.numeroOrden} confirmada.\nTotal: $${resumen.total.toLocaleString()}`);
+
+  carrito = []; // reiniciamos carrito
   renderCarrito();
 });
 

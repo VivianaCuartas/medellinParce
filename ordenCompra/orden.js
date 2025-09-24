@@ -1,69 +1,43 @@
-// Productos de ejemplo en carrito
-let carrito = [
-  { id: 1, nombre: "Laptop Gamer", precio: 3500, cantidad: 1 },
-  { id: 2, nombre: "Mouse Inalámbrico", precio: 150, cantidad: 2 }
-];
+class Orden {
+  constructor(numeroOrden, cliente, listaProductos = []) {
+    this.numeroOrden = numeroOrden;      // Número único de la orden
+    this.cliente = cliente;              // Nombre o datos del cliente
+    this.listaProductos = listaProductos; // Array con productos {nombre, precio, cantidad}
+    this.total = this.calcularTotal();   // Calcula el total automáticamente
+    this.fecha = new Date().toLocaleString(); // Fecha y hora actual
+    this.estado = "Pendiente";           // Estado inicial
+  }
 
-function renderCarrito() {
-  const listaCarrito = document.getElementById("lista-carrito");
-  const totalCarrito = document.getElementById("total-carrito");
+  // Método privado de apoyo (calcular total de la orden)
+  calcularTotal() {
+    return this.listaProductos.reduce((acc, producto) => {
+      return acc + (producto.precio * producto.cantidad);
+    }, 0);
+  }
 
-  listaCarrito.innerHTML = "";
-  let total = 0;
+  // Confirmar y guardar la orden
+  generarOrden() {
+    this.total = this.calcularTotal();
+    this.estado = "Confirmada";
 
-  carrito.forEach((prod, index) => {
-    let subtotal = prod.precio * prod.cantidad;
-    total += subtotal;
+    // Persistimos la orden en localStorage
+    localStorage.setItem(
+      `orden_${this.numeroOrden}`,
+      JSON.stringify(this)
+    );
 
-    listaCarrito.innerHTML += `
-      <div class="item-carrito">
-        <span>${prod.nombre} - $${prod.precio} x ${prod.cantidad} = $${subtotal}</span>
-        <button onclick="eliminarProducto(${index})">❌</button>
-      </div>
-    `;
-  });
+    console.log(`✅ Orden #${this.numeroOrden} confirmada y guardada.`);
+  }
 
-  totalCarrito.textContent = `$${total}`;
+  // Mostrar un resumen de la orden (en formato de objeto)
+  mostrarResumen() {
+    return {
+      numeroOrden: this.numeroOrden,
+      cliente: this.cliente,
+      productos: this.listaProductos,
+      total: this.total,
+      fecha: this.fecha,
+      estado: this.estado
+    };
+  }
 }
-
-function eliminarProducto(index) {
-  carrito.splice(index, 1);
-  renderCarrito();
-}
-
-// Confirmar compra
-document.getElementById("btn-confirmar").addEventListener("click", () => {
-  let orden = new Orden(Date.now(), "Cliente Demo", carrito);
-  orden.generarOrden();
-
-  mostrarOrden(orden);
-});
-
-function mostrarOrden(orden) {
-  document.getElementById("vista-carrito").classList.remove("activa");
-  document.getElementById("vista-orden").classList.add("activa");
-
-  const resumen = orden.mostrarResumen();
-  const resumenDiv = document.getElementById("resumen-orden");
-
-  resumenDiv.innerHTML = `
-    <p>Orden #: ${resumen.numeroOrden}</p>
-    <p>Cliente: ${resumen.cliente}</p>
-    <p>Fecha: ${resumen.fecha}</p>
-    <p>Estado: ${resumen.estado}</p>
-    <h3>Productos:</h3>
-    <ul>
-      ${resumen.productos.map(p => `<li>${p.nombre} (x${p.cantidad}) - $${p.precio * p.cantidad}</li>`).join("")}
-    </ul>
-    <p>Total: $${resumen.total}</p>
-  `;
-}
-
-// Volver a tienda
-document.getElementById("btn-volver").addEventListener("click", () => {
-  document.getElementById("vista-orden").classList.remove("activa");
-  document.getElementById("vista-carrito").classList.add("activa");
-});
-
-// Render inicial
-renderCarrito();
