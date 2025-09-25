@@ -1,3 +1,4 @@
+
 // Datos iniciales del carrito
 let carrito = [
   { id: 1, nombre: "Camisa Mujer", precio: 10000, cantidad: 1 },
@@ -7,6 +8,7 @@ let carrito = [
 // Configuración de impuestos y descuentos
 const DESCUENTO = 0.20; 
 const IVA = 0.19;       
+
 
 // Renderizar carrito en la tabla
 function renderCarrito() {
@@ -21,12 +23,12 @@ function renderCarrito() {
       <td>${prod.nombre}</td>
       <td>$${prod.precio.toLocaleString()}</td>
       <td>
-        <button class="btn-cantidad" onclick="cambiarCantidad(${index}, -1)">-</button>
+        <button class="btn-cantidad" data-index="${index}" data-valor="-1">-</button>
         ${prod.cantidad}
-        <button class="btn-cantidad" onclick="cambiarCantidad(${index}, 1)">+</button>
+        <button class="btn-cantidad" data-index="${index}" data-valor="1">+</button>
       </td>
       <td>$${subtotal.toLocaleString()}</td>
-      <td><button class="btn-eliminar" onclick="eliminarProducto(${index})">🗑</button></td>
+      <td><button class="btn-eliminar" data-index="${index}">🗑</button></td>
     `;
     tbody.appendChild(fila);
   });
@@ -62,6 +64,20 @@ function calcularTotales() {
   `;
 }
 
+// Event Delegation para botones (+, -, eliminar)
+document.getElementById("lista-productos").addEventListener("click", (e) => {
+  if (e.target.classList.contains("btn-cantidad")) {
+    const index = parseInt(e.target.dataset.index);
+    const valor = parseInt(e.target.dataset.valor);
+    cambiarCantidad(index, valor);
+  }
+
+  if (e.target.classList.contains("btn-eliminar")) {
+    const index = parseInt(e.target.dataset.index);
+    eliminarProducto(index);
+  }
+});
+
 // Finalizar compra usando la clase Orden
 document.getElementById("btn-finalizar").addEventListener("click", () => {
   if (carrito.length === 0) {
@@ -79,7 +95,11 @@ document.getElementById("btn-finalizar").addEventListener("click", () => {
 
   // Creamos la orden usando la clase Orden (orden.js)
   const numeroOrden = Date.now();
-  const orden = new Orden(numeroOrden, cliente, carrito);
+  const orden = new Orden(
+    numeroOrden,
+    cliente,
+    JSON.parse(JSON.stringify(carrito)) // ✅ copia profunda del carrito
+  );
 
   orden.generarOrden(); // guarda en localStorage
 
