@@ -6,8 +6,6 @@ export function inicioSesion() {
         if (user === userStorage && password === passwStorage) {
             console.log("Inicio de sesión exitoso.");
 
-       /*   // Guardamos el usuario actual que inició sesión
-            localStorage.setItem("currentUser", userStorage); */
             return true; 
         }
       
@@ -16,8 +14,8 @@ export function inicioSesion() {
         console.log(`Error: Usuario o contraseña incorrectos. Quedan ${intentoMax - conIntentos} intentos.`);
         
         if (conIntentos === intentoMax) {
-            alert("Cuenta bloqueada por 24 horas, comunícate con tu banco");
-            console.log("Cuenta bloqueada por 24 horas, comunícate con tu banco");
+            alert("Cuenta bloqueada por demasiados intentos fallidos.");
+            console.log("Cuenta bloqueada por demasiados intentos fallidos.");
             return false; 
         } 
 
