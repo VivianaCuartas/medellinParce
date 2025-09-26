@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificacion de datos</title>
+    <link rel="stylesheet" href="./style.css">
+    <script type="module" src="./modificarDatos.js"></script>
+</head>
+<body>
+    <main>
+        <div class="datos-container"></div>
+            <h1>Perfil de Usuario</h1>
+            <form action="modificarDatos" method="post">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" disabled>
+                <br>
+                <label for="apellido">Apellido:</label>
+                <input type="text" id="apellido" name="apellido" disabled >
+                <br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" disabled>
+                <br>
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" disabled>
+                <br>
+                <button type="submit" id="editarBtn">Editar Perfil</button>
+                <button type="submit" id="guardarBtn">Guardar Cambios</button>
+            </form>
+            <div id="toast-container"></div>
+        </div>
+    </main>
+</body>
+</html>
