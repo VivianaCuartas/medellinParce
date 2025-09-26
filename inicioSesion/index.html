@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./style.css">
     <!-- <script src="./inicioSesion.js"></script> -->
     <script type="module" src="./login.js"></script>
+    
 </head>
 <body>
     <main>
@@ -16,7 +17,7 @@
             </div>
             <h1>Bienvenido a Medellin Parce</h1>
             <section>
-                <form action="login" method="post">
+                <form id="login-form">
                     <input type="text" id="username" name="username" required placeholder="Ingrese su usuario">
                     <br>
                     <input type="password" id="password" name="password" required placeholder="Ingrese su contraseña">
@@ -24,8 +25,9 @@
                     <button type="submit" id="login-button">Iniciar sesión</button>
                 </form>
                 <div class="sincuenta">
-                    <p>¿No tienes una cuenta? <a href="">Regístrate aquí</a></p>
+                    <p>¿No tienes una cuenta? <a href="../registro/index.html">Regístrate aquí</a></p>
                 </div>
+                <div id="toast-container-mensaje"></div>
             </section>
         </div>
     </main>       

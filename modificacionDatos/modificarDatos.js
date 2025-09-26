@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
       showToast('Cambios guardados correctamente ✅');
     });
   
-    // --- toast helper ---
+
     function showToast(message, duration = 3500) {
       if (!toastContainer) return;
       const toast = document.createElement('div');
@@ -80,9 +80,8 @@ document.addEventListener('DOMContentLoaded', () => {
       toast.textContent = message;
       toastContainer.appendChild(toast);
   
-      // Remove after duration (give time for fade out animations if present)
+  
       setTimeout(() => {
-        // fade-out can be handled by CSS; just remove after a little more time
         toast.remove();
       }, duration + 400);
     }

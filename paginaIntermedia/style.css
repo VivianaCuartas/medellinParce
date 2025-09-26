@@ -146,3 +146,132 @@ footer .footer-info a:hover {
 footer .footer-logo img {
   height: 80px;
 }
+
+/* Profile styles */
+.profile-container {
+  position: relative;
+  display: inline-block;
+}
+
+#profile-link {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+}
+
+.profile-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1000;
+  border-radius: 4px;
+}
+
+.profile-dropdown.show {
+  display: block;
+}
+
+.profile-dropdown a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.profile-dropdown a:hover {
+  background-color: #f1f1f1;
+}
+
+/* Toast styles for login page */
+.toast {
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 4px;
+  color: white;
+  text-align: center;
+}
+
+.toast.success {
+  background-color: #4CAF50;
+}
+
+.toast.error {
+  background-color: #f44336;
+}
+
+/* Header styles to match modificacionDatos/index.html */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: white;
+  border-bottom: 1px solid #eee;
+}
+
+header .logo img {
+  height: 80px;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  list-style: none;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+nav ul li a:hover {
+  border-bottom: 2px solid black;
+}
+
+/* Profile icon styles */
+#perfil-usuario {
+  position: relative;
+  cursor: pointer;
+}
+
+.icono-usuario {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.dropdown-contenido {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1000;
+  border-radius: 4px;
+}
+
+.dropdown-contenido.active {
+  display: block;
+}
+
+.dropdown-contenido a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-contenido a:hover {
+  background-color: #f1f1f1;
+}

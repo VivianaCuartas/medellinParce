@@ -5,19 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pagina intermedia</title>
   <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="./navbar.js" defer></script>
 </head>
 <body>
-  <header id="navbar">
-    <div id="logo">
-        <a href="/paginaPrincipal/index.html"><img src="/paginaPrincipal/logo.png" alt="logo"></a>
+  <header>
+    <div class="logo">
+      <a href="../paginaPrincipal/home.html"><img src="../paginaPrincipal/logo.png" alt="logo"></a>
     </div>
-    <nav id="nav-links">
-      <a href="#">PRODUCTOS</a>
-      <a href="#">BLOG</a>
-      <a href="#">NOSOTROS</a>
-      <a href="/inicioSesion/index.html">INICIAR SESION</a>
-
-
+    <nav>
+      <ul>
+        <li><a href="../paginaPrincipal/home.html">INICIO</a></li>
+        <li><a href="/paginaIntermedia/index.html">PRODUCTOS</a></li>
+        <li><a href="#">BLOG</a></li>
+        <li><a href="#">NOSOTROS</a></li>
+        <div id="auth-section">
+          <a href="../inicioSesion/index.html">INICIAR SESION</a>
+        </div>
+      </ul>
     </nav>
   </header>
 
@@ -53,7 +58,7 @@
       <p>Todos los derechos reservados.</p>
     </div>
     <div class="footer-logo">
-      <img src="/paginaPrincipal/logo.png" alt="Logo Medellín Parce">
+      <img src="../paginaPrincipal/logo.png" alt="Logo Medellín Parce">
     </div>
   </footer>
 </body>

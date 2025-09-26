@@ -1,42 +1,43 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const form = document.querySelector('form');
-    
-    form.addEventListener('submit', function(event) {
-        event.preventDefault(); 
+    const loginForm = document.getElementById('login-form');
+    const toastContainer = document.getElementById('toast-container-mensaje');
+
+    loginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
         
-        const usernameInput = document.getElementById('username').value;
-        const passwordInput = document.getElementById('password').value;
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
         
-        localStorage.setItem('user', usernameInput);
-        localStorage.setItem('password', passwordInput);
-        
-        let errorMsg = document.getElementById('error-message');
-        if (!errorMsg) {
-            errorMsg = document.createElement('p');
-            errorMsg.id = 'error-message';
-            errorMsg.style.color = 'red';
-            form.appendChild(errorMsg);
+        // For demonstration, we'll use basic validation
+        // In a real app, you would validate against a server
+        if (username && password) {
+            // Store login status in localStorage
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('username', username);
+            
+            // Show success message
+            showToast('Inicio de sesión exitoso. Redirigiendo...', 'success');
+            
+            // Redirect after short delay
+            setTimeout(() => {
+                window.location.href = '../paginaIntermedia/index.html';
+            }, 1500);
+        } else {
+            showToast('Por favor ingrese usuario y contraseña', 'error');
         }
-        
-        import('./inicioSesion.js')
-            .then(module => {
-                window.user = usernameInput;
-                window.password = passwordInput;
-                window.userStorage = localStorage.getItem('user');
-                window.passwStorage = localStorage.getItem('password');
-                
-                const loginResult = module.inicioSesion();
-                
-                if (loginResult) {
-                    console.log("Login successful, redirecting...");
-                    window.location.href = 'home.html'; 
-                } else {
-                    errorMsg.textContent = 'Inicio de sesión fallido';
-                }
-            })
-            .catch(error => {
-                console.error('Error loading inicioSesion module:', error);
-                errorMsg.textContent = 'Error al cargar el módulo de inicio de sesión';
-            });
     });
+    
+    // Toast message function
+    function showToast(message, type) {
+        const toast = document.createElement('div');
+        toast.className = `toast ${type}`;
+        toast.textContent = message;
+        
+        toastContainer.appendChild(toast);
+        
+        // Remove toast after 3 seconds
+        setTimeout(() => {
+            toast.remove();
+        }, 3000);
+    }
 });
