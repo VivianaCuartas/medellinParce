@@ -7,8 +7,7 @@ let carrito = [
 
 // Configuración de impuestos y descuentos
 const DESCUENTO = 0.20; 
-const IVA = 0.19;       
-
+const IVA = 0.19;
 
 // Renderizar carrito en la tabla
 function renderCarrito() {

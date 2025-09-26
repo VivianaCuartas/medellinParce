@@ -2,7 +2,7 @@
 body {
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
-  background: #f2f4f1;
+  background: #fff;
   color: #555;
 }
 
@@ -12,8 +12,10 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 15px 30px;
-  background: linear-gradient(90deg, #324d3d, #7f8c8d);
+  background: white;
   color: white;
+  border-bottom: 1px solid #ccc; 
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
 #logo img {
@@ -24,11 +26,21 @@ body {
 }
 
 #nav-links a {
-  margin: 0 10px;
-  text-decoration: none;
-  color: white;
-  font-size: 14px;
+margin: 0 10px;
+    text-decoration: none;
+    color: #6d6e5e;
+    font-size: 14px;
 }
+
+.btn-carrito {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  position: relative;
+}
+
 
 #btn-register,
 #btn-login {
@@ -46,9 +58,9 @@ body {
 }
 
 #btn-login {
-  background: transparent;
-  border: 1px solid white;
-  color: white;
+    background: #8d9c90;
+    border: none;
+    color: white;
 }
 
 /* Contenedor principal */
