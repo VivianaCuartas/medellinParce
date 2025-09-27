@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Medellín Parce - Hombres</title>
+  <title>Medellín Parce</title>
   <link rel="stylesheet" href="style.css">
+  <!-- <script type="module" src="../modificacionDatos/modificarDatos.js"></script> -->
+  <script type="module" src="../inicioSesion/login.js"></script>
 </head>
 <body>
   <!-- Header -->
@@ -14,11 +16,17 @@
     </div>
     <nav>
       <ul>
-        <li><a href="index.html">INICIO</a></li>
+        <li><a href="home.html">INICIO</a></li>
         <li><a href="/paginaIntermedia/index.html">PRODUCTOS</a></li>
         <li><a href="#">BLOG</a></li>
         <li><a href="#">NOSOTROS</a></li>
         <li><a href="/inicioSesion/index.html">INICIAR SESION</a></li>
+        <div id="perfil-usuario">
+          <img src="../modificacionDatos/image copy.png" alt="Icono de usuario" class="icono-usuario">
+          <div class="dropdown-contenido">
+            <a href="../modificacionDatos/index.html">Mi Perfil</a>
+            <a href="../inicioSesion/index.html">Cerrar Sesión</a>
+          </div>
       </ul>
     </nav>
   </header>
