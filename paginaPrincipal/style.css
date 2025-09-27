@@ -143,3 +143,52 @@ footer .footer-info {
 footer .footer-logo img {
   height: 80px;
 }
+
+#perfil-usuario {
+  position: relative;
+  cursor: pointer;
+  width: auto; /* Change from fixed width */
+  height: auto; /* Change from fixed height */
+  display: flex;
+  align-items: center;
+  display: none; /* Hidden by default */
+}
+
+.icono-usuario {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.dropdown-contenido {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #f9f9f9;
+}
+
+.dropdown-contenido a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  font-weight: normal;
+}
+
+.dropdown-contenido a:hover {
+  background-color: #f1f1f1;
+  border-bottom: none;
+}
+
+#perfil-usuario:hover .dropdown-contenido {
+  display: block;
+}
