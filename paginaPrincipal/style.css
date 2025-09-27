@@ -125,6 +125,28 @@ nav ul li a:hover {
   background: #444;
 }
 
+/* Galería */
+.galeria {
+  padding: 40px;
+  text-align: center;
+}
+
+.grid-galeria {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.grid-galeria img {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+
 /* Footer */
 footer {
   display: flex;
