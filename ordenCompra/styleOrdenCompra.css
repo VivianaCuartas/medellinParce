@@ -5,14 +5,17 @@
 }
 
 body {
- /*  font-family: 'Segoe UI', sans-serif; */
+ /*font-family: 'Segoe UI', sans-serif; */
   margin: 0;
   background: #fff;
-  color: #555;
+  color: #000000;
 }
 
 /* Navbar */
 #navbar {
+  font-family: 'Arial Black', Arial, sans-serif;
+  color: #000;
+  background: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -32,9 +35,10 @@ body {
 
 #nav-links a {
 margin: 0 10px;
-    text-decoration: none;
-    color: #6d6e5e;
-    font-size: 14px;  
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
 .btn-carrito {
@@ -48,12 +52,13 @@ margin: 0 10px;
 
 
 #btn-register,
-#btn-login {
-  margin-left: 10px;
-  padding: 8px 15px;
-  border-radius: 20px;
-  font-size: 14px;
+#btn-login {  
+  margin-left: 15px;
+  padding: 8px 18px;
+  border: none;
   cursor: pointer;
+  font-weight: bold;
+  border-radius: 20px;
 }
 
 #btn-register {
@@ -86,20 +91,19 @@ margin: 0 10px;
 
 #titulo-factura {
   text-align: center;
-  color: #6d6e5e;
+  color: #000000;
 }
 
 #numero-factura {
   display: block;
   text-align: center;
   margin-bottom: 20px;
-  color: #888;
+  color: #000000;
 }
 
 /* Cliente info */
 #cliente-info {
   margin-bottom: 20px;
-  background: #e9ebe6;
   padding: 15px;
   border-radius: 10px;
 }
@@ -109,10 +113,12 @@ margin: 0 10px;
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
+  background: rgb(202, 206, 204);
+  border-radius: 10px;
 }
 
 #tabla-productos thead {
-  background: #8B8A73;
+  background: rgba(0, 0, 0, 0.7);
   color: white;
 }
 
@@ -123,7 +129,7 @@ margin: 0 10px;
 }
 
 .btn-cantidad {
-  background: #8d9c90;
+  background: rgba(0, 0, 0, 0.7);
   border: none;
   padding: 5px 10px;
   border-radius: 5px;
@@ -145,7 +151,6 @@ margin: 0 10px;
 
 /* Totales */
 #totales {
-  background: #e9ebe6;
   padding: 15px;
   border-radius: 10px;
   margin-bottom: 20px;
@@ -153,7 +158,7 @@ margin: 0 10px;
 
 #totales h3 {
   margin-top: 10px;
-  color: #324d3d;
+  color: #000000;
 }
 
 /* Botón Finalizar */
@@ -161,7 +166,7 @@ margin: 0 10px;
   display: block;
   width: 100%;
   padding: 15px;
-  background: #6d7a73;
+  background: rgba(0, 0, 0, 0.7);
   border: none;
   border-radius: 12px;
   color: white;
