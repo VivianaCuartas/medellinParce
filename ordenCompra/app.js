@@ -35,6 +35,22 @@ function renderCarrito() {
   calcularTotales();
 }
 
+function showToast(mensaje) {
+  const container = document.getElementById("toast-container");
+
+  const toast = document.createElement("div");
+  toast.classList.add("toast");
+  toast.textContent = mensaje;
+
+  container.appendChild(toast);
+
+  // eliminar el toast después de 4s (cuando termina la animación)
+  setTimeout(() => {
+    toast.remove();
+  }, 4000);
+}
+
+
 // Cambiar cantidad
 function cambiarCantidad(index, valor) {
   carrito[index].cantidad += valor;
@@ -80,7 +96,7 @@ document.getElementById("lista-productos").addEventListener("click", (e) => {
 // Finalizar compra usando la clase Orden
 document.getElementById("btn-finalizar").addEventListener("click", () => {
   if (carrito.length === 0) {
-    alert("El carrito está vacío.");
+    showToast("⚠️ El carrito está vacío.");
     return;
   }
 
@@ -94,20 +110,13 @@ document.getElementById("btn-finalizar").addEventListener("click", () => {
 
   // Creamos la orden usando la clase Orden (orden.js)
   const numeroOrden = Date.now();
-  const orden = new Orden(
-    numeroOrden,
-    cliente,
-    JSON.parse(JSON.stringify(carrito)) // ✅ copia profunda del carrito
-  );
+  const orden = new Orden(numeroOrden, cliente, carrito);
 
   orden.generarOrden(); // guarda en localStorage
 
   const resumen = orden.mostrarResumen();
-  alert(`✅ Orden #${resumen.numeroOrden} confirmada.\nTotal: $${resumen.total.toLocaleString()}`);
+  showToast(`✅ Orden #${resumen.numeroOrden} confirmada. Total: $${resumen.total.toLocaleString()}`);
 
   carrito = []; // reiniciamos carrito
   renderCarrito();
 });
-
-// Render inicial
-renderCarrito();

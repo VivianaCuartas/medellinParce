@@ -5,7 +5,8 @@
 }
 
 body {
- /*font-family: 'Segoe UI', sans-serif; */
+ font-family: 'Segoe UI', sans-serif;
+ size: 16px;
   margin: 0;
   background: #fff;
   color: #000000;
@@ -184,3 +185,43 @@ img {
   margin-top: 10px;
   margin-left: 20px;
 }
+
+  /* contenedor de toasts */
+  #toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+  }
+  
+  /* estilo de cada toast */
+  .toast {
+    background-color: #000000;
+    color: #fff;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    opacity: 0;
+    transform: translateX(100%);
+    animation: slidein 0.5s forwards, fadeout 0.5s forwards 3s; /* entra y se va */
+  }
+  
+  @keyframes slidein {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeout {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
