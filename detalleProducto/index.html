@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Producto - Merch Los Parce</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="navbar">
+    <div id="logo">
+      <a href="../paginaPrincipal/index.html"> <img src="../ordenCompra/logo medellin-parce1.png" alt="logo"></a>
+    </div>
+    <nav id="nav-links">
+      <a href="#">PRODUCTOS</a>
+      <a href="#">BLOG</a>
+      <a href="#">NOSOTROS</a>
+      <button id="btn-carrito" class="btn-carrito">
+      🛒
+      <span id="contador-carrito">0</span>
+    </button>
+    </nav>
+  </header>
+
+    <!-- Contenedor Principal -->
+    <div class="container">
+        <h1 class="page-title">Detalle de producto</h1>
+        
+        <div class="product-card">
+            <!-- Contenedor del Producto -->
+            <div class="product-content">
+                <!-- Información del Producto -->
+                <div class="product-info">
+                    <h2 class="product-title" id="productName">CAMISETA PARCE TROPICAL</h2>
+                    
+                    <p class="product-description" id="productDescription">
+                        Camiseta 100% algodón con estampado exclusivo de diseño tropical. Ideal para el verano, con un ajuste cómodo y tela transpirable.
+                    </p>
+
+                    <!-- Selector de Talla -->
+                    <div class="option-group">
+                        <label class="option-label">TALLA</label>
+                        <div class="size-selector" id="sizeSelector">
+                            <!-- Se generará dinámicamente -->
+                        </div>
+                    </div>
+
+                    <!-- Selector de Color -->
+                    <div class="option-group">
+                        <label class="option-label">COLOR</label>
+                        <div class="color-selector" id="colorSelector">
+                            <!-- Se generará dinámicamente -->
+                        </div>
+                    </div>
+
+                    <!-- Selector de Cantidad -->
+                    <div class="option-group">
+                        <label class="option-label">CANTIDAD</label>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" id="decreaseBtn">-</button>
+                            <input type="number" class="quantity-input" id="quantityInput" value="1" min="1" max="10" readonly>
+                            <button class="quantity-btn" id="increaseBtn">+</button>
+                        </div>
+                    </div>
+
+                    <!-- Precio -->
+                    <div class="price-container">
+                        <span class="price-label">Precio:</span>
+                        <span class="price" id="productPrice">$45.000</span>
+                    </div>
+
+                    <!-- Botón Agregar al Carrito -->
+                    <button class="add-to-cart-btn" id="addToCartBtn">
+                        AGREGAR AL CARRITO
+                    </button>
+
+                    <!-- Mensaje de confirmación -->
+                    <div class="message" id="message"></div>
+                </div>
+
+                <!-- Imagen del Producto -->
+                <div class="product-image-container">
+                    <img src="./camiseta1.jpg" alt="Camiseta Parce Tropical" class="product-image" id="productImage">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./detalleProducto.js"></script>
+</body>
+</html>

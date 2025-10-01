@@ -51,29 +51,6 @@ margin: 0 10px;
   position: relative;
 }
 
-
-#btn-register,
-#btn-login {  
-  margin-left: 15px;
-  padding: 8px 18px;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  border-radius: 20px;
-}
-
-#btn-register {
-  background: #8d9c90;
-  border: none;
-  color: white;
-}
-
-#btn-login {
-    background: #8d9c90;
-    border: none;
-    color: white;
-}
-
 /* Contenedor principal */
 #contenedor {
   display: flex;
