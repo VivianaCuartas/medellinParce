@@ -1,4 +1,4 @@
-// Check if we're on the login page
+// Login form handling
 const loginForm = document.getElementById('login-form');
 if (loginForm) {
     loginForm.addEventListener('submit', function(e) {
@@ -9,8 +9,7 @@ if (loginForm) {
         
         // Basic validation
         if (username && password) {
-            // In a real application, you would verify credentials with a backend
-            // For this example, we're just storing login state in localStorage
+            // Store login state in localStorage
             localStorage.setItem('isLoggedIn', 'true');
             
             // Show success message
@@ -26,7 +25,43 @@ if (loginForm) {
     });
 }
 
-// Function to show toast messages
+// Check login status and update UI accordingly
+document.addEventListener('DOMContentLoaded', function() {
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    
+    // Get UI elements
+    const authSection = document.getElementById('auth-section');
+    const perfilUsuario = document.getElementById('perfil-usuario');
+    
+    console.log('Login state:', isLoggedIn);
+    console.log('Auth section:', authSection);
+    console.log('Profile section:', perfilUsuario);
+    
+    if (isLoggedIn) {
+        // User is logged in
+        if (authSection) authSection.style.display = 'none';
+        if (perfilUsuario) {
+            perfilUsuario.style.display = 'block';
+            console.log('Profile should be visible now');
+        }
+    } else {
+        // User is not logged in
+        if (authSection) authSection.style.display = 'block';
+        if (perfilUsuario) perfilUsuario.style.display = 'none';
+    }
+    
+    // Set up logout functionality
+    const logoutLinks = document.querySelectorAll('#perfil-usuario .dropdown-contenido a:last-child');
+    logoutLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            // Clear auth data
+            localStorage.removeItem('isLoggedIn');
+            console.log('Logged out');
+        });
+    });
+});
+
+// Toast notification function
 function showToast(message, type) {
     const toastContainer = document.getElementById('toast-container-mensaje');
     if (!toastContainer) return;
@@ -42,39 +77,6 @@ function showToast(message, type) {
         toast.remove();
     }, 3000);
 }
-
-// Check login status for home page navigation
-document.addEventListener('DOMContentLoaded', function() {
-    // This runs on every page where login.js is included
-    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-    
-    // Elements that need to be toggled based on login status
-    const loginMenuItem = document.querySelector('nav ul li a[href="/inicioSesion/index.html"]')?.parentNode;
-    const perfilUsuario = document.getElementById('perfil-usuario');
-    
-    if (loginMenuItem && perfilUsuario) {
-        // We're on a page with navigation
-        if (isLoggedIn) {
-            // User is logged in
-            loginMenuItem.style.display = 'none';
-            perfilUsuario.style.display = 'block';
-        } else {
-            // User is not logged in
-            loginMenuItem.style.display = 'list-item';
-            perfilUsuario.style.display = 'none';
-        }
-    }
-    
-    // Add logout functionality
-    const logoutLink = document.querySelector('#perfil-usuario .dropdown-contenido a[href="../inicioSesion/index.html"]');
-    if (logoutLink) {
-        logoutLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            localStorage.removeItem('isLoggedIn');
-            window.location.href = '/inicioSesion/index.html';
-        });
-    }
-});
 
 // Export any functions you need to use in other modules
 export { showToast };

@@ -6,7 +6,8 @@
   <title>Pagina intermedia</title>
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <script src="./navbar.js" defer></script>
+  <script type="module" src="../inicioSesion/login.js"></script>
+  <script type="module" src="./navbar.js"></script>
 </head>
 <body>
   <header>
@@ -19,9 +20,14 @@
         <li><a href="/paginaIntermedia/index.html">PRODUCTOS</a></li>
         <li><a href="#">BLOG</a></li>
         <li><a href="#">NOSOTROS</a></li>
-        <div id="auth-section">
-          <a href="../inicioSesion/index.html">INICIAR SESION</a>
-        </div>
+        <li id="auth-section"><a href="../inicioSesion/index.html">INICIAR SESION</a></li>
+        <li id="perfil-usuario">
+          <img src="../modificacionDatos/image copy.png" alt="Icono de usuario" class="icono-usuario">
+          <div class="dropdown-contenido">
+            <a href="../modificacionDatos/index.html">Mi Perfil</a>
+            <a href="../inicioSesion/index.html">Cerrar Sesión</a>
+          </div>
+        </li>
       </ul>
     </nav>
   </header>
@@ -35,7 +41,7 @@
           <span>CAMISETAS<br>HOMBRE</span>
         </div>
         <div class="card">
-          <a href="#"><img src="./imagenes/Camiseta mujer.jpg" alt="Camisetas Mujer"></a>
+          <a href="./productosMujer.html"><img src="./imagenes/Camiseta mujer.jpg" alt="Camisetas Mujer"></a>
           <span>CAMISETAS<br>MUJER</span>
         </div>
         <div class="card">

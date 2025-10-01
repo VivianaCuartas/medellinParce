@@ -10,6 +10,19 @@ document.addEventListener('DOMContentLoaded', () => {
   
     const toastContainer = document.getElementById('toast-container');
     const inputs = [nombreInput, apellidoInput, emailInput, telefonoInput];
+
+    // Get user data from localStorage
+    const userData = JSON.parse(localStorage.getItem('userData'));
+  
+    // Update welcome message with user's name
+    if (userData && userData.nombre) {
+        document.getElementById('user-name').textContent = userData.nombre;
+    } else {
+        document.getElementById('user-name').textContent = "Sara";
+    }
+  
+    // In your modificarDatos.js file
+
   
     // Make sure buttons won't submit the form (works even if HTML has type="submit")
     [editarBtn, guardarBtn].forEach(btn => {
@@ -86,4 +99,3 @@ document.addEventListener('DOMContentLoaded', () => {
       }, duration + 400);
     }
   });
-  
