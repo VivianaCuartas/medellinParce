@@ -10,49 +10,41 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    font-family: 'Arial Black', Arial, sans-serif;
 }
 
 header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    padding: 20px;
-    background: white;
-    border-bottom: 1px solid #eee;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: white;
+  border-bottom: 1px solid #eee;
 }
-  
+
 header .logo img {
-    height: 80px;
-    margin-bottom: 15px;
+  height: 80px;
 }
-  
+
 nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    align-items: center; /* Add this to vertically center all nav items */
-    gap: 30px;
-    padding: 0;
-    margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  list-style: none;
 }
-  
+
 nav ul li a {
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-    letter-spacing: 1px;
+  text-decoration: none;
+  color: black;
+  letter-spacing: 1px;
 }
-  
+
 nav ul li a:hover {
-    border-bottom: 2px solid black;
+  border-bottom: 2px solid black;
 }
 
 main {
-    margin-top: 150px; /* Add margin to push content below fixed header */
+    margin-top: 6px; 
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -135,7 +127,7 @@ h1{
     font-size: 16px;
     cursor: pointer;
     display: block; 
-    margin: 0 auto; 
+    margin: 17px auto; 
     margin-top: 25px;
 }
 #guardarBtn:hover{
@@ -198,7 +190,7 @@ h1{
     }
   }
   form {
-    margin: 20px 0;
+    margin: -22px 0;
     max-width: 500px;
   }
   
@@ -226,7 +218,29 @@ h1{
     border-color: #4a90e2;
     box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
   }
+  .welcome-text {
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: "alfa slab one", sans-serif;
+    margin-bottom: 20px;
+    color: #4a4a4a;
+  }
+  #welcome-message{
+    font-weight: bold;
+    font-family: "alfa slab one", sans-serif;
+    color: #000000;
+  }
+  
+  #user-name {
+    font-weight: bold;
+    font-family: "alfa slab one", sans-serif;
+    color: #000000;
+    margin-top: 20px;
+  }
 
+  #auth-section {
+  display: block; /* Allow it to be visible by default */
+}
 
   #perfil-usuario {
     position: relative;
@@ -264,12 +278,10 @@ h1{
     text-decoration: none;
     display: block;
     text-align: left;
-    font-weight: normal;
   }
   
   .dropdown-contenido a:hover {
     background-color: #f1f1f1;
-    border-bottom: none;
   }
   
   #perfil-usuario:hover .dropdown-contenido {

@@ -10,7 +10,7 @@
 <body>
     <header>
     <div class="logo">
-        <a href="./index.html"><img src="logo.png" alt="Medellín Parce Logo"></a>
+        <a href="../paginaPrincipal/home.html"><img src="logo.png" alt="Medellín Parce Logo"></a>
       </div>
       <nav>
         <ul>
@@ -19,7 +19,7 @@
           <li><a href="#">BLOG</a></li>
           <li><a href="#">NOSOTROS</a></li>
           <div id="perfil-usuario">
-            <img src="image copy.png" alt="Icono de usuario" class="icono-usuario">
+            <img src="./image copy.png" alt="Icono de usuario" class="icono-usuario">
             <div class="dropdown-contenido">
               <a href="modificacionDatos/index.html">Mi Perfil</a>
               <a href="../inicioSesion/index.html">Cerrar Sesión</a>
@@ -33,6 +33,7 @@
   
     <main>
         <div class="datos-container"></div>
+        <p id="welcome-message" class="welcome-text">Hola <span id="user-name"></span></p>
             <h1>Perfil de Usuario</h1>
             <form action="modificarDatos" method="post">
                 <label for="nombre">Nombre:</label>
