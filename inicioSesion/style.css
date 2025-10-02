@@ -36,10 +36,22 @@ main {
     margin: 0 auto;
 }
 
+#logo {
+    display: block;
+    margin: 0 auto 20px;
+    text-align: center;
+}
+
 #logo img {
-    width: 255px; 
-    height: 150px; 
-    margin-bottom: 40px; 
+    width: 180px; /* Slightly increased width */
+    height: auto; /* Changed to auto to maintain aspect ratio */
+    max-height: 100px;
+    object-fit: contain; /* Ensures the logo maintains its aspect ratio */
+    transition: transform 0.2s ease; /* Smooth hover effect */
+}
+
+#logo img:hover {
+    transform: scale(1.05); /* Slight enlargement on hover */
 }
 
 h1 {

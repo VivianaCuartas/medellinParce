@@ -1,4 +1,4 @@
-// Login form handling
+
 const loginForm = document.getElementById('login-form');
 if (loginForm) {
     loginForm.addEventListener('submit', function(e) {
@@ -25,7 +25,7 @@ if (loginForm) {
     });
 }
 
-// Check login status and update UI accordingly
+
 document.addEventListener('DOMContentLoaded', function() {
     const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
     
@@ -45,12 +45,12 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Profile should be visible now');
         }
     } else {
-        // User is not logged in
+   
         if (authSection) authSection.style.display = 'block';
         if (perfilUsuario) perfilUsuario.style.display = 'none';
     }
     
-    // Set up logout functionality
+
     const logoutLinks = document.querySelectorAll('#perfil-usuario .dropdown-contenido a:last-child');
     logoutLinks.forEach(link => {
         link.addEventListener('click', function(e) {
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Toast notification function
+
 function showToast(message, type) {
     const toastContainer = document.getElementById('toast-container-mensaje');
     if (!toastContainer) return;
@@ -71,12 +71,11 @@ function showToast(message, type) {
     toast.textContent = message;
     
     toastContainer.appendChild(toast);
-    
-    // Remove toast after 3 seconds
+   
     setTimeout(() => {
         toast.remove();
     }, 3000);
 }
 
-// Export any functions you need to use in other modules
+
 export { showToast };
