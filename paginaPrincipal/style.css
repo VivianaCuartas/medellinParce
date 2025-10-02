@@ -146,6 +146,65 @@ nav ul li a:hover {
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
+/* Formulario */
+.formulario {
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.formulario form {
+  width: 100%;
+  max-width: 1500px; /* mismo ancho que la galería */
+  background: #f9f9f9;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.formulario h2 {
+  margin-bottom: 20px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+button {
+  background: black;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 1px;
+  width: 100%;
+}
+
+button:hover {
+  background: #444;
+}
+
+
 
 /* Footer */
 footer {
