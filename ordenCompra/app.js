@@ -1,9 +1,14 @@
-
 // Datos iniciales del carrito
-let carrito = [
-  { id: 1, nombre: "Camisa Mujer", precio: 10000, cantidad: 1 },
-  { id: 2, nombre: "Camisa Hombre", precio: 44000, cantidad: 4 }
-];
+let carrito = [];
+
+// Cargar carrito desde localStorage
+function loadCart() {
+  const savedCart = localStorage.getItem("cart");
+  if (savedCart) {
+    carrito = JSON.parse(savedCart);
+    renderCarrito();
+  }
+}
 
 // Configuración de impuestos y descuentos
 const DESCUENTO = 0.20; 
@@ -15,15 +20,15 @@ function renderCarrito() {
   tbody.innerHTML = "";
 
   carrito.forEach((prod, index) => {
-    const subtotal = prod.precio * prod.cantidad;
+    const subtotal = prod.price * prod.quantity;
 
     const fila = document.createElement("tr");
     fila.innerHTML = `
-      <td>${prod.nombre}</td>
-      <td>$${prod.precio.toLocaleString()}</td>
+      <td>${prod.name}</td>
+      <td>$${prod.price.toLocaleString()}</td>
       <td>
         <button class="btn-cantidad" data-index="${index}" data-valor="-1">-</button>
-        ${prod.cantidad}
+        ${prod.quantity}
         <button class="btn-cantidad" data-index="${index}" data-valor="1">+</button>
       </td>
       <td>$${subtotal.toLocaleString()}</td>
@@ -37,36 +42,31 @@ function renderCarrito() {
 
 function showToast(mensaje) {
   const container = document.getElementById("toast-container");
-
   const toast = document.createElement("div");
   toast.classList.add("toast");
   toast.textContent = mensaje;
-
   container.appendChild(toast);
-
-  // eliminar el toast después de 4s (cuando termina la animación)
-  setTimeout(() => {
-    toast.remove();
-  }, 4000);
+  setTimeout(() => toast.remove(), 4000);
 }
-
 
 // Cambiar cantidad
 function cambiarCantidad(index, valor) {
-  carrito[index].cantidad += valor;
-  if (carrito[index].cantidad <= 0) carrito[index].cantidad = 1;
+  carrito[index].quantity += valor;
+  if (carrito[index].quantity <= 0) carrito[index].quantity = 1;
+  saveCart();
   renderCarrito();
 }
 
 // Eliminar producto
 function eliminarProducto(index) {
   carrito.splice(index, 1);
+  saveCart();
   renderCarrito();
 }
 
 // Calcular totales
 function calcularTotales() {
-  const subtotal = carrito.reduce((acc, prod) => acc + prod.precio * prod.cantidad, 0);
+  const subtotal = carrito.reduce((acc, prod) => acc + prod.price * prod.quantity, 0);
   const descuento = subtotal * DESCUENTO;
   const iva = (subtotal - descuento) * IVA;
   const total = subtotal - descuento + iva;
@@ -79,7 +79,7 @@ function calcularTotales() {
   `;
 }
 
-// Event Delegation para botones (+, -, eliminar)
+// Delegación de eventos (+, -, eliminar)
 document.getElementById("lista-productos").addEventListener("click", (e) => {
   if (e.target.classList.contains("btn-cantidad")) {
     const index = parseInt(e.target.dataset.index);
@@ -93,30 +93,23 @@ document.getElementById("lista-productos").addEventListener("click", (e) => {
   }
 });
 
-// Finalizar compra usando la clase Orden
+// Guardar carrito actualizado
+function saveCart() {
+  localStorage.setItem("cart", JSON.stringify(carrito));
+}
+
+// Finalizar compra
 document.getElementById("btn-finalizar").addEventListener("click", () => {
   if (carrito.length === 0) {
     showToast("⚠️ El carrito está vacío.");
     return;
   }
 
-  // Simulamos un cliente
-  const cliente = {
-    nombre: "Juan Pérez",
-    documento: "123456789",
-    email: "juanperez@mail.com",
-    telefono: "3012345678"
-  };
-
-  // Creamos la orden usando la clase Orden (orden.js)
-  const numeroOrden = Date.now();
-  const orden = new Orden(numeroOrden, cliente, carrito);
-
-  orden.generarOrden(); // guarda en localStorage
-
-  const resumen = orden.mostrarResumen();
-  showToast(`✅ Orden #${resumen.numeroOrden} confirmada. Total: $${resumen.total.toLocaleString()}`);
-
-  carrito = []; // reiniciamos carrito
+  showToast(`✅ Orden confirmada. Total: $${document.getElementById("total-pagar").textContent}`);
+  carrito = [];
+  saveCart();
   renderCarrito();
 });
+
+// Inicializar
+document.addEventListener("DOMContentLoaded", loadCart);
