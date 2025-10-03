@@ -6,6 +6,15 @@ if (loginForm) {
         
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
+
+         // Recuperar lista de usuarios registrados
+        const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+         // Buscar si existe uno que coincida
+        const usuarioValido = usuarios.find(u => 
+            (u.username === username || u.email === username) && u.password === password
+        );
+
         
         // Basic validation
         if (username && password) {
