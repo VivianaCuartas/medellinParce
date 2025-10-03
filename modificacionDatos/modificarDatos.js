@@ -1,3 +1,5 @@
+import { Usuario } from '../formularioRegistro/logicaRegistro.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('form');
     const editarBtn = document.getElementById('editarBtn');
@@ -11,20 +13,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const toastContainer = document.getElementById('toast-container');
     const inputs = [nombreInput, apellidoInput, emailInput, telefonoInput];
 
+    // Check if user is logged in
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    if (!isLoggedIn) {
+        // Redirect to login page if not logged in
+        window.location.href = '/inicioSesion/index.html';
+        return;
+    }
+
     // Get user data from localStorage
-    const userData = JSON.parse(localStorage.getItem('userData'));
-  
-    // Update welcome message with user's name
-    if (userData && userData.nombre) {
-        document.getElementById('user-name').textContent = userData.nombre;
-    } else {
-        document.getElementById('user-name').textContent = "Sara";
+    const usuarioActivo = JSON.parse(localStorage.getItem('usuarioActivo'));
+    if (!usuarioActivo) {
+        // No active user, redirect to login
+        localStorage.removeItem('isLoggedIn');
+        window.location.href = '/inicioSesion/index.html';
+        return;
     }
   
-    // In your modificarDatos.js file
-
+    // Update welcome message with user's name
+    const nombreCompleto = usuarioActivo.fullname.split(' ');
+    const userNameElement = document.getElementById('user-name');
+    if (userNameElement) {
+        userNameElement.textContent = nombreCompleto[0] || "Usuario";
+    }
   
-    // Make sure buttons won't submit the form (works even if HTML has type="submit")
+    // Make sure buttons won't submit the form
     [editarBtn, guardarBtn].forEach(btn => {
       if (btn) btn.setAttribute('type', 'button');
     });
@@ -36,25 +49,23 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   
-    // --- preload dummy info if not exists ---
-    if (!localStorage.getItem('perfilUsuario')) {
-      const dummy = {
-        nombre: 'Sara',
-        apellido: 'Arango',
-        email: 'sara@example.com',
-        telefono: '+57 300 123 4567'
-      };
-      localStorage.setItem('perfilUsuario', JSON.stringify(dummy));
-    }
+    // Create or update perfilUsuario based on active user data
+    const perfilUsuario = {
+        nombre: usuarioActivo.fullname ? usuarioActivo.fullname.split(' ')[0] : '',
+        apellido: usuarioActivo.fullname ? usuarioActivo.fullname.split(' ')[1] || '' : '',
+        email: usuarioActivo.email || '',
+        telefono: usuarioActivo.telefono || ''
+    };
+    
+    localStorage.setItem('perfilUsuario', JSON.stringify(perfilUsuario));
+    
+    // Load user data into form inputs
+    nombreInput.value = perfilUsuario.nombre;
+    apellidoInput.value = perfilUsuario.apellido;
+    emailInput.value = perfilUsuario.email;
+    telefonoInput.value = perfilUsuario.telefono;
   
-    // --- load saved data into inputs ---
-    const datosGuardados = JSON.parse(localStorage.getItem('perfilUsuario') || '{}');
-    nombreInput.value = datosGuardados.nombre || '';
-    apellidoInput.value = datosGuardados.apellido || '';
-    emailInput.value = datosGuardados.email || '';
-    telefonoInput.value = datosGuardados.telefono || '';
-  
-    // remove the 'popup' class after the animation so it can re-play next time
+    // remove the 'popup' class after the animation
     inputs.forEach(i => {
       i.addEventListener('animationend', () => i.classList.remove('popup'));
     });
@@ -70,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   
-    // --- save changes ---
+    // --- save changes using Usuario class methods ---
     guardarBtn.addEventListener('click', (e) => {
       e.preventDefault();
       const datos = {
@@ -79,20 +90,42 @@ document.addEventListener('DOMContentLoaded', () => {
         email: emailInput.value.trim(),
         telefono: telefonoInput.value.trim()
       };
-      localStorage.setItem('perfilUsuario', JSON.stringify(datos));
+      
+      // Create a Usuario instance with the active user data
+      const usuarioInstance = new Usuario(
+        usuarioActivo.fullname, 
+        usuarioActivo.email, 
+        usuarioActivo.username, 
+        usuarioActivo.password
+      );
+      
+      // Set any additional properties
+      usuarioInstance.telefono = usuarioActivo.telefono || '';
+      usuarioInstance.intentos = usuarioActivo.intentos || 0;
+      
+      // Use the modificarDatos method to update the user's profile
+      if (usuarioInstance.modificarDatos(datos)) {
+        // Get the updated user data
+        const updatedUser = Usuario.obtenerUsuario(usuarioActivo.username);
+        if (updatedUser) {
+          // Update the active user in localStorage
+          localStorage.setItem('usuarioActivo', JSON.stringify(updatedUser));
+        }
+        
+        showToast('Cambios guardados correctamente ✅');
+      } else {
+        showToast('Error al guardar los cambios ❌');
+      }
   
       inputs.forEach(input => input.disabled = true);
-      showToast('Cambios guardados correctamente ✅');
     });
   
-
     function showToast(message, duration = 3500) {
       if (!toastContainer) return;
       const toast = document.createElement('div');
       toast.className = 'toast';
       toast.textContent = message;
       toastContainer.appendChild(toast);
-  
   
       setTimeout(() => {
         toast.remove();
