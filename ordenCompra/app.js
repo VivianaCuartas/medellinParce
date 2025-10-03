@@ -131,7 +131,7 @@ document.getElementById("btn-finalizar").addEventListener("click", () => {
   const cliente = JSON.parse(localStorage.getItem("usuarioActivo"));
 
 
-  showToast(`✅ Orden confirmada. Total: $${document.getElementById("total-pagar").textContent}`);
+  showToast(`✅ Orden confirmada. $${document.getElementById("total-pagar").textContent}`);
   carrito = [];
   saveCart();
   renderCarrito();
