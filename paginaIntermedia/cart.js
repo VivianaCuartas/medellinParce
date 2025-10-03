@@ -83,12 +83,17 @@ function updateCartDisplay() {
 
 function checkout() {
     if (cart.length > 0) {
-        alert('¡Gracias por tu compra! Tu pedido ha sido procesado.');
-        cart = [];
-        updateCartDisplay();
+        // Guardamos el carrito en localStorage (ya lo tienes con saveCart)
         saveCart();
+
+        // Redirigir a la página de resumen de compra
+        window.location.href = "../ordenCompra/index.html"; 
+        // Ajusta la ruta según la estructura de carpetas
+    } else {
+         showToast("⚠️ El carrito está vacío.");
     }
 }
+
 
 // Initialize cart on page load
 document.addEventListener('DOMContentLoaded', loadCart);

@@ -49,6 +49,17 @@ document.addEventListener('DOMContentLoaded', function() {
         if (authSection) authSection.style.display = 'block';
         if (perfilUsuario) perfilUsuario.style.display = 'none';
     }
+
+    if (usuarioValido) {
+    console.log("Inicio de sesión exitoso.");
+    alert(`Bienvenido, ${usuarioValido.fullname}`);
+
+    // Guardar login y datos del usuario en localStorage
+    localStorage.setItem('isLoggedIn', 'true');
+    localStorage.setItem('usuarioActivo', JSON.stringify(usuarioValido));
+
+    return true;
+}
     
 
     const logoutLinks = document.querySelectorAll('#perfil-usuario .dropdown-contenido a:last-child');
