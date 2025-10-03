@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Medellin Parce</title>
+    <link rel="stylesheet" href="./style.css">
+    <script type="module" src="./logicaRegistro.js"></script>
+</head>
+<body>
+    <main>
+        <div class="login-container">
+            <div id="logo">
+                <a href="../paginaPrincipal/home.html"><img src="/paginaPrincipal/logo.png" alt="logo"></a>
+            </div>
+            
+            <h1>Crear una cuenta</h1>
+            <section>
+                <form id="register-form">
+                    <input type="text" id="fullname" name="fullname" required placeholder="Nombre completo">
+                    <br>
+                    <input type="email" id="email" name="email" required placeholder="Correo electrónico">
+                    <br>
+                    <input type="text" id="username" name="username" required placeholder="Nombre de usuario">
+                    <br>
+                    <input type="password" id="password" name="password" required placeholder="Contraseña">
+                    <br>
+                    <input type="password" id="confirm-password" name="confirm-password" required placeholder="Confirmar contraseña">
+                    <br>
+                    <button type="submit" id="register-button">Registrarse</button>
+                </form>
+                <div class="sincuenta">
+                    <p>¿Ya tienes cuenta? <a href="/inicioSesion/index.html">Inicia sesión aquí</a></p>
+                </div>
+                <div id="toast-container-mensaje"></div>
+            </section>
+        </div>
+    </main>       
+</body>
+</html>
