@@ -9,8 +9,6 @@ body {
   font-family: 'Arial Black', Arial, sans-serif;
   color: #000;
   background: #fff;
-
-  /* Layout flexible para empujar footer al fondo */
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -34,6 +32,7 @@ nav ul {
   display: flex;
   justify-content: center;
   gap: 30px;
+  flex-wrap: wrap;
 }
 
 nav ul li a {
@@ -49,11 +48,12 @@ nav ul li a:hover {
 
 /* Slogan centrado en pantalla */
 .slogan {
-  flex: 1; /* ocupa todo el espacio entre header y footer */
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding: 40px 20px;
 }
 
 .slogan h2 {
@@ -70,18 +70,34 @@ footer {
   border-top: 1px solid #ddd;
   background: #fff;
   margin-top: auto;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 footer .footer-info {
   font-size: 14px;
   color: #555;
+  line-height: 1.6;
+}
+
+footer .footer-info p {
+  margin: 5px 0;
+}
+
+footer .footer-info a {
+  color: #555;
+  text-decoration: none;
+}
+
+footer .footer-info a:hover {
+  text-decoration: underline;
 }
 
 footer .footer-logo img {
   height: 80px;
 }
 
-/* Login / Perfil (solo lo que está en el HTML) */
+/* Login / Perfil */
 #auth-section {
   display: block;
 }
@@ -89,7 +105,7 @@ footer .footer-logo img {
 #perfil-usuario {
   position: relative;
   cursor: pointer;
-  display: none; /* oculto por defecto, mostrado vía JS */
+  display: none;
 }
 
 .icono-usuario {
@@ -110,6 +126,7 @@ footer .footer-logo img {
   box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
   z-index: 10;
   border-radius: 4px;
+  margin-top: 5px;
 }
 
 .dropdown-contenido a {
@@ -126,4 +143,166 @@ footer .footer-logo img {
 
 #perfil-usuario:hover .dropdown-contenido {
   display: block;
+}
+
+/* ============================================
+   MEDIA QUERIES - RESPONSIVE
+   ============================================ */
+
+/* Tablets (768px y menores) */
+@media screen and (max-width: 768px) {
+  /* Header */
+  header {
+    padding: 15px 20px;
+  }
+
+  header .logo img {
+    height: 60px;
+    margin-bottom: 10px;
+  }
+
+  nav ul {
+    gap: 15px;
+    padding: 0 10px;
+  }
+
+  nav ul li a {
+    font-size: 14px;
+  }
+
+  /* Slogan */
+  .slogan {
+    padding: 30px 15px;
+  }
+
+  .slogan h2 {
+    font-size: 1.5rem;
+  }
+
+  /* Footer */
+  footer {
+    padding: 20px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  footer .footer-logo img {
+    height: 60px;
+  }
+}
+
+/* Móviles (480px y menores) */
+@media screen and (max-width: 480px) {
+  /* Header */
+  header {
+    padding: 15px 10px;
+  }
+
+  header .logo img {
+    height: 50px;
+    margin-bottom: 8px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  nav ul li {
+    width: 100%;
+    text-align: center;
+  }
+
+  nav ul li a {
+    font-size: 13px;
+    display: block;
+    padding: 8px 0;
+  }
+
+  /* Slogan */
+  .slogan {
+    padding: 20px 10px;
+  }
+
+  .slogan h2 {
+    font-size: 1.2rem;
+  }
+
+  /* Footer */
+  footer {
+    padding: 15px 10px;
+  }
+
+  footer .footer-info {
+    font-size: 12px;
+  }
+
+  footer .footer-logo img {
+    height: 50px;
+  }
+
+  /* Dropdown centrado en móvil */
+  .dropdown-contenido {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 140px;
+  }
+}
+
+/* Móviles muy pequeños (360px y menores) */
+@media screen and (max-width: 360px) {
+  header .logo img {
+    height: 40px;
+  }
+
+  nav ul li a {
+    font-size: 12px;
+  }
+
+  .slogan h2 {
+    font-size: 1rem;
+  }
+
+  footer .footer-info {
+    font-size: 11px;
+  }
+
+  footer .footer-logo img {
+    height: 40px;
+  }
+}
+
+/* Landscape en móviles */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+  header {
+    padding: 10px 20px;
+  }
+
+  header .logo img {
+    height: 40px;
+    margin-bottom: 5px;
+  }
+
+  nav ul {
+    gap: 10px;
+  }
+
+  nav ul li a {
+    font-size: 12px;
+    padding: 4px 0;
+  }
+
+  .slogan {
+    padding: 20px 15px;
+  }
+
+  .slogan h2 {
+    font-size: 1.3rem;
+  }
+
+  footer {
+    padding: 15px 20px;
+  }
 }
