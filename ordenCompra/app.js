@@ -39,6 +39,30 @@ function renderCarrito() {
 
   calcularTotales();
 }
+function cargarDatosCliente() {
+  const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+  if (!usuarioActivo) {
+    document.getElementById("cliente-info").innerHTML = `
+      <h3>👨🏻 Información del cliente</h3>
+      <p><em>No se encontró usuario activo</em></p>
+    `;
+    return;
+  }
+
+  document.getElementById("cliente-info").innerHTML = `
+    <h3>👨🏻 Información del cliente</h3>
+    <p><strong>Nombre:</strong> ${usuarioActivo.fullname}</p>
+    <p><strong>Documento:</strong> ${usuarioActivo.documento}</p>
+    <p><strong>Email:</strong> ${usuarioActivo.email}</p>
+    <p><strong>Teléfono:</strong> ${usuarioActivo.telefono}</p>
+  `;
+}
+
+// Ejecutar al cargar
+document.addEventListener("DOMContentLoaded", () => {
+  cargarDatosCliente();
+  loadCart(); // tu función para cargar carrito
+});
 
 function showToast(mensaje) {
   const container = document.getElementById("toast-container");
@@ -104,6 +128,8 @@ document.getElementById("btn-finalizar").addEventListener("click", () => {
     showToast("⚠️ El carrito está vacío.");
     return;
   }
+  const cliente = JSON.parse(localStorage.getItem("usuarioActivo"));
+
 
   showToast(`✅ Orden confirmada. Total: $${document.getElementById("total-pagar").textContent}`);
   carrito = [];
