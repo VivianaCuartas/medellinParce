@@ -6,7 +6,7 @@ class Usuario {
         this.password = password;
         this.telefono = ""; // Adding telefono property for profile completion
         this.intentos = 0;  // Track login attempts for this user
-        this.intentoMax = 3; // Maximum allowed attempts
+       
     }
 
     // Método de registro 
