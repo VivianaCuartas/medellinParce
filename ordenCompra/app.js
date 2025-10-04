@@ -1,5 +1,54 @@
-// Datos iniciales del carrito
+// ============================================
+// CONFIGURACIÓN INICIAL
+// ============================================
+const DESCUENTO = 0.20; 
+const IVA = 0.19;
 let carrito = [];
+let numeroOrdenActual = null; // Guardar el número de orden de esta sesión
+
+// ============================================
+// FUNCIONES AUXILIARES
+// ============================================
+
+// Obtener el número de orden actual SIN incrementar
+function obtenerNumeroOrdenActual() {
+  if (numeroOrdenActual === null) {
+    numeroOrdenActual = (parseInt(localStorage.getItem("ultimoNumeroOrden")) || 0) + 1;
+  }
+  return numeroOrdenActual;
+}
+
+// Incrementar y guardar el número de orden (solo al confirmar)
+function confirmarNumeroOrden() {
+  const nuevoNumero = obtenerNumeroOrdenActual();
+  localStorage.setItem("ultimoNumeroOrden", nuevoNumero);
+  return nuevoNumero;
+}
+
+// Obtener fecha actual formateada
+function obtenerFechaActual() {
+  const ahora = new Date();
+  const opciones = { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric',
+  };
+  return ahora.toLocaleDateString('es-ES', opciones);
+}
+
+// Mostrar notificaciones toast
+function showToast(mensaje) {
+  const container = document.getElementById("toast-container");
+  const toast = document.createElement("div");
+  toast.classList.add("toast");
+  toast.textContent = mensaje;
+  container.appendChild(toast);
+  setTimeout(() => toast.remove(), 4000);
+}
+
+// ============================================
+// GESTIÓN DEL CARRITO
+// ============================================
 
 // Cargar carrito desde localStorage
 function loadCart() {
@@ -10,9 +59,10 @@ function loadCart() {
   }
 }
 
-// Configuración de impuestos y descuentos
-const DESCUENTO = 0.20; 
-const IVA = 0.19;
+// Guardar carrito en localStorage
+function saveCart() {
+  localStorage.setItem("cart", JSON.stringify(carrito));
+}
 
 // Renderizar carrito en la tabla
 function renderCarrito() {
@@ -39,41 +89,8 @@ function renderCarrito() {
 
   calcularTotales();
 }
-function cargarDatosCliente() {
-  const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
-  if (!usuarioActivo) {
-    document.getElementById("cliente-info").innerHTML = `
-      <h3>👨🏻 Información del cliente</h3>
-      <p><em>No se encontró usuario activo</em></p>
-    `;
-    return;
-  }
 
-  document.getElementById("cliente-info").innerHTML = `
-    <h3>👨🏻 Información del cliente</h3>
-    <p><strong>Nombre:</strong> ${usuarioActivo.fullname}</p>
-    <p><strong>Documento:</strong> ${usuarioActivo.documento}</p>
-    <p><strong>Email:</strong> ${usuarioActivo.email}</p>
-    <p><strong>Teléfono:</strong> ${usuarioActivo.telefono}</p>
-  `;
-}
-
-// Ejecutar al cargar
-document.addEventListener("DOMContentLoaded", () => {
-  cargarDatosCliente();
-  loadCart(); // tu función para cargar carrito
-});
-
-function showToast(mensaje) {
-  const container = document.getElementById("toast-container");
-  const toast = document.createElement("div");
-  toast.classList.add("toast");
-  toast.textContent = mensaje;
-  container.appendChild(toast);
-  setTimeout(() => toast.remove(), 4000);
-}
-
-// Cambiar cantidad
+// Cambiar cantidad de un producto
 function cambiarCantidad(index, valor) {
   carrito[index].quantity += valor;
   if (carrito[index].quantity <= 0) carrito[index].quantity = 1;
@@ -81,14 +98,14 @@ function cambiarCantidad(index, valor) {
   renderCarrito();
 }
 
-// Eliminar producto
+// Eliminar producto del carrito
 function eliminarProducto(index) {
   carrito.splice(index, 1);
   saveCart();
   renderCarrito();
 }
 
-// Calcular totales
+// Calcular totales (subtotal, descuento, IVA, total)
 function calcularTotales() {
   const subtotal = carrito.reduce((acc, prod) => acc + prod.price * prod.quantity, 0);
   const descuento = subtotal * DESCUENTO;
@@ -103,7 +120,53 @@ function calcularTotales() {
   `;
 }
 
-// Delegación de eventos (+, -, eliminar)
+// ============================================
+// DATOS DEL CLIENTE Y FACTURA
+// ============================================
+
+function cargarDatosCliente() {
+  const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+  
+  // Obtener número de orden SIN incrementar
+  const numeroOrden = obtenerNumeroOrdenActual();
+  const fechaOrden = obtenerFechaActual();
+  
+  // Actualizar número de factura
+  document.getElementById("numero-factura").textContent = `#Factura ${numeroOrden}`;
+  
+  // Agregar o actualizar la fecha
+  let fechaElement = document.getElementById("fecha-factura");
+  if (!fechaElement) {
+    fechaElement = document.createElement("p");
+    fechaElement.id = "fecha-factura";
+    fechaElement.style.textAlign = "center";
+    fechaElement.style.marginBottom = "20px";
+    fechaElement.style.color = "#000";
+    document.getElementById("numero-factura").after(fechaElement);
+  }
+  fechaElement.textContent = `${fechaOrden}`;
+  
+  // Mostrar información del cliente
+  if (!usuarioActivo) {
+    document.getElementById("cliente-info").innerHTML = `
+      <h3>👨🏻 Información del cliente</h3>
+      <p><em>No se encontró usuario activo</em></p>
+    `;
+    return;
+  }
+
+  document.getElementById("cliente-info").innerHTML = `
+    <h3>👨🏻 Información del cliente</h3>
+    <p><strong>Nombre:</strong> ${usuarioActivo.fullname}</p>
+    <p><strong>Email:</strong> ${usuarioActivo.email}</p>
+  `;
+}
+
+// ============================================
+// EVENT LISTENERS
+// ============================================
+
+// Delegación de eventos para botones de cantidad y eliminar
 document.getElementById("lista-productos").addEventListener("click", (e) => {
   if (e.target.classList.contains("btn-cantidad")) {
     const index = parseInt(e.target.dataset.index);
@@ -117,25 +180,52 @@ document.getElementById("lista-productos").addEventListener("click", (e) => {
   }
 });
 
-// Guardar carrito actualizado
-function saveCart() {
-  localStorage.setItem("cart", JSON.stringify(carrito));
-}
-
 // Finalizar compra
 document.getElementById("btn-finalizar").addEventListener("click", () => {
   if (carrito.length === 0) {
     showToast("⚠️ El carrito está vacío.");
     return;
   }
+  
   const cliente = JSON.parse(localStorage.getItem("usuarioActivo"));
-
-
-  showToast(`✅ Orden confirmada. $${document.getElementById("total-pagar").textContent}`);
-  carrito = [];
-  saveCart();
-  renderCarrito();
+  
+  // AQUÍ se confirma e incrementa el número de orden
+  const numeroOrden = confirmarNumeroOrden();
+  
+  // Convertir productos del carrito al formato de la clase Orden
+  const productosOrden = carrito.map((prod, index) => ({
+    id: index,
+    nombre: prod.name,
+    precio: prod.price,
+    cantidad: prod.quantity
+  }));
+  
+  // Crear y guardar la orden
+  const orden = new Orden(numeroOrden, cliente, productosOrden);
+  
+  if (orden.generarOrden()) {
+    const total = orden.total.toLocaleString();
+    showToast(`✅ Orden #${numeroOrden} confirmada. Total: $${total}`);
+    
+    // Limpiar carrito
+    carrito = [];
+    saveCart();
+    renderCarrito();
+    
+    // Resetear el número de orden para la siguiente
+    numeroOrdenActual = null;
+    
+    // Opcional: Redirigir después de 2 segundos
+    setTimeout(() => window.location.href = "../paginaPrincipal/home.html", 3000);
+  } else {
+    showToast("❌ Error al guardar la orden");
+  }
 });
 
-// Inicializar
-document.addEventListener("DOMContentLoaded", loadCart);
+// ============================================
+// INICIALIZACIÓN
+// ============================================
+document.addEventListener("DOMContentLoaded", () => {
+  cargarDatosCliente();
+  loadCart();
+});

@@ -215,7 +215,7 @@ nav ul li a:hover {
 }
 
 #factura {
-  background: rgba(90, 106, 95, 0.45);
+  background: rgba(90, 106, 95, 0.35);
   border-radius: 15px;
   padding: 25px;
   max-width: 800px;
