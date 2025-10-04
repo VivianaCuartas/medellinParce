@@ -51,7 +51,7 @@ class Usuario {
         // Check password
         if (usuario.password === inputPassword) {
             // Reset attempts on successful login
-            usuario.intentos = 0;
+            usuario.intentos = 3;
             
             // Update user in storage
             this.actualizarUsuarioEnStorage(usuario);
