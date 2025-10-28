@@ -4,21 +4,6 @@
     src: url(../inicioSesion/AlfaSlabOne-Regular.ttf);
 }
 
-<<<<<<< HEAD
-body {
- font-family: 'Segoe UI', sans-serif;
- size: 16px;
-  margin: 0;
-  background: #fff;
-  color: #000000;
-}
-
-/* Navbar */
-#navbar {
-  font-family: 'Arial Black', Arial, sans-serif;
-  color: #000;
-  background: #fff;
-=======
 * {
   box-sizing: border-box;
   margin: 0;
@@ -26,7 +11,7 @@ body {
 }
 
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Arial Black', Arial, sans-serif;
   font-size: 16px;
   margin: 0;
   background: #fff;
@@ -40,36 +25,25 @@ main {
   flex: 1;
 }
 
-/* Header / Navbar - IGUAL QUE PÁGINA DE PRODUCTOS */
+/* Header / Navbar */
 header {
->>>>>>> 887244ed24d8813ebc5ba60478d144263d82e302
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
   background: white;
   border-bottom: 1px solid #eee;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
 header .logo img {
   height: 80px;
 }
 
-<<<<<<< HEAD
-#nav-links a {
-margin: 0 10px;
-  text-decoration: none;
-  color: black;
-  font-weight: bold;
-  letter-spacing: 1px;
-=======
 nav ul {
   display: flex;
   align-items: center;
   gap: 25px;
   list-style: none;
->>>>>>> 887244ed24d8813ebc5ba60478d144263d82e302
 }
 
 nav ul li a {
@@ -85,17 +59,15 @@ nav ul li a:hover {
 
 /* Profile icon styles */
 #auth-section {
-  display: none; /* Ocultar por defecto - mostrar solo si NO hay sesión */
+  display: block;
 }
 
 #perfil-usuario {
   position: relative;
   cursor: pointer;
-  display: block; /* Mostrar por defecto - ocultar solo si NO hay sesión */
+  display: none;
 }
 
-<<<<<<< HEAD
-=======
 .icono-usuario {
   width: 30px;
   height: 30px;
@@ -131,7 +103,7 @@ nav ul li a:hover {
   display: block;
 }
 
-/* Cart styles - IGUAL QUE PÁGINA DE PRODUCTOS */
+/* Cart styles */
 .cart-icon-container {
   position: relative;
   margin-left: 15px;
@@ -234,7 +206,6 @@ nav ul li a:hover {
   background: #45a049;
 }
 
->>>>>>> 887244ed24d8813ebc5ba60478d144263d82e302
 /* Contenedor principal */
 #contenedor {
   display: flex;
@@ -243,6 +214,7 @@ nav ul li a:hover {
 }
 
 #factura {
+  font-family: Arial, Helvetica, sans-serif;
   background: rgba(90, 106, 95, 0.35);
   border-radius: 15px;
   padding: 25px;
@@ -254,11 +226,8 @@ nav ul li a:hover {
 #titulo-factura {
   text-align: center;
   color: #000000;
-<<<<<<< HEAD
-=======
   font-size: 1.8rem;
   margin-bottom: 10px;
->>>>>>> 887244ed24d8813ebc5ba60478d144263d82e302
 }
 
 #numero-factura {
@@ -286,10 +255,7 @@ nav ul li a:hover {
   margin-bottom: 20px;
   background: rgb(202, 206, 204);
   border-radius: 10px;
-<<<<<<< HEAD
-=======
   overflow: hidden;
->>>>>>> 887244ed24d8813ebc5ba60478d144263d82e302
 }
 
 #tabla-productos thead {
@@ -372,47 +338,6 @@ footer {
   margin-top: auto;
 }
 
-<<<<<<< HEAD
-  /* contenedor de toasts */
-  #toast-container {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 9999;
-  }
-  
-  /* estilo de cada toast */
-  .toast {
-    background-color: #000000;
-    color: #fff;
-    padding: 12px 16px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    opacity: 0;
-    transform: translateX(100%);
-    animation: slidein 0.5s forwards, fadeout 0.5s forwards 3s; /* entra y se va */
-  }
-  
-  @keyframes slidein {
-    0% {
-      transform: translateX(100%);
-      opacity: 0;
-    }
-    100% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-  
-  @keyframes fadeout {
-    0% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
-=======
 footer .footer-info {
   font-size: 14px;
   color: #555;
@@ -757,4 +682,3 @@ footer .footer-logo img {
     font-size: 1.3rem;
   }
 }
->>>>>>> 887244ed24d8813ebc5ba60478d144263d82e302

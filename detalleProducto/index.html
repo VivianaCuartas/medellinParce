@@ -5,23 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalle de Producto - Merch Los Parce</title>
     <link rel="stylesheet" href="./style.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script type="module" src="../inicioSesion/login.js"></script>
+    <script src="cart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cartIcon = document.querySelector('.cart-icon-container');
+            const cartDropdown = document.querySelector('.cart-dropdown');
+
+            cartIcon.addEventListener('click', function(e) {
+                e.stopPropagation();
+                cartDropdown.classList.toggle('show');
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!cartDropdown.contains(e.target) && !cartIcon.contains(e.target)) {
+                    cartDropdown.classList.remove('show');
+                }
+            });
+        });
+    </script>
 </head>
 <body>
     <!-- Header -->
-    <header id="navbar">
-    <div id="logo">
-      <a href="../paginaPrincipal/index.html"> <img src="../ordenCompra/logo medellin-parce1.png" alt="logo"></a>
-    </div>
-    <nav id="nav-links">
-      <a href="#">PRODUCTOS</a>
-      <a href="#">BLOG</a>
-      <a href="#">NOSOTROS</a>
-      <button id="btn-carrito" class="btn-carrito">
-      🛒
-      <span id="contador-carrito">0</span>
-    </button>
-    </nav>
-  </header>
+<header>
+        <div class="logo">
+          <a href="../paginaPrincipal/home.html"><img src="../paginaPrincipal/logo.png" alt="logo"></a>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="../paginaPrincipal/home.html">INICIO</a></li>
+            <li><a href="/paginaIntermedia/index.html">PRODUCTOS</a></li>
+            <li><a href="#">BLOG</a></li>
+            <li><a href="#">NOSOTROS</a></li>
+            <li id="auth-section"><a href="../inicioSesion/index.html">INICIAR SESION</a></li>
+            <li id="perfil-usuario">
+              <img src="../modificacionDatos/image copy.png" alt="Icono de usuario" class="icono-usuario">
+              <div class="dropdown-contenido">
+                <a href="../modificacionDatos/index.html">Mi Perfil</a>
+                <a href="../inicioSesion/index.html">Cerrar Sesión</a>
+              </div>
+            </li>
+            <li class="cart-icon-container">
+              <i class="fas fa-shopping-cart cart-icon"></i>
+              <span class="cart-count">0</span>
+              <div class="cart-dropdown">
+                <div class="cart-content"></div>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </header>
 
     <!-- Contenedor Principal -->
     <div class="container">
