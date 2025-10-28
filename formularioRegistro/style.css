@@ -25,7 +25,7 @@ main {
 }
 
 
-/* LOGIN CONTAINER */
+/* LOGIN / REGISTER CONTAINER */
 .login-container {
     width: 400px;
     padding: 30px;
@@ -36,22 +36,10 @@ main {
     margin: 0 auto;
 }
 
-#logo {
-    display: block;
-    margin: 0 auto 20px;
-    text-align: center;
-}
-
 #logo img {
-    width: 180px; /* Slightly increased width */
-    height: auto; /* Changed to auto to maintain aspect ratio */
-    max-height: 100px;
-    object-fit: contain; /* Ensures the logo maintains its aspect ratio */
-    transition: transform 0.2s ease; /* Smooth hover effect */
-}
-
-#logo img:hover {
-    transform: scale(1.05); /* Slight enlargement on hover */
+    width: 255px; 
+    height: 150px; 
+    margin-bottom: 40px; 
 }
 
 h1 {
@@ -63,7 +51,10 @@ h1 {
 
 /* INPUTS */
 #username,
-#password {
+#password,
+#fullname,
+#email,
+#confirm-password {
     width: 300px;
     border-radius: 45px;
     border: 1px solid #ccc;
@@ -78,7 +69,10 @@ h1 {
 }
 
 #username::placeholder,
-#password::placeholder {
+#password::placeholder,
+#fullname::placeholder,
+#email::placeholder,
+#confirm-password::placeholder {
     color: #525250;
     font-style: italic;
     opacity: 0.7;
@@ -101,7 +95,24 @@ h1 {
     background-color: #424242;
 }
 
-/* TEXTO DE REGISTRO */
+/* BOTÓN REGISTRO */
+#register-button {
+    width: 150px;
+    height: 40px;
+    border-radius: 45px;
+    border: none;
+    background-color: #000000;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 20px auto; 
+    display: block;
+}
+#register-button:hover {
+    background-color: #424242;
+}
+
+/* TEXTO DE REGISTRO / LOGIN */
 .sincuenta {
     color: white;
     font-size: 12px;

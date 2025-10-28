@@ -1,0 +1,289 @@
+@font-face {
+    font-family: 'Alfa Slab One';
+    src: url(./AlfaSlabOne-Regular.ttf);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #e2e2e2;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Arial Black', Arial, sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: white;
+  border-bottom: 1px solid #eee;
+}
+
+header .logo img {
+  height: 80px;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  list-style: none;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: black;
+  letter-spacing: 1px;
+}
+
+nav ul li a:hover {
+  border-bottom: 2px solid black;
+}
+
+main {
+    margin-top: 6px; 
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 40px;
+    border-top: 1px solid #ddd;
+    background: #fff;
+  }
+  
+  footer .footer-info {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  footer .footer-logo img {
+    height: 80px;
+  }
+
+h1{
+    text-align: center;
+    color: #000000;
+    margin-bottom: 70px;
+    font-size: 40px;
+    font-family: 'alfa slab one', sans-serif;
+ 
+   
+}
+
+#nombre, #apellido, #email, #password, #telefono {
+    width: 300px;
+    height: 20px;
+    text-align: center;
+    font: 35px;
+    border-radius: 45px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    background-color: #D9D9D9;
+    justify-content: center;
+    align-items: center;
+    display: block; 
+    margin-left: auto; 
+    margin-right: auto; 
+}
+
+
+
+
+#editarBtn{
+    width: 150px;
+    height: 40px;
+    border-radius: 45px;
+    border: none;
+    background-color: #000000;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    display: block; 
+    margin: 0 auto; 
+}
+
+#editarBtn:hover{
+    background-color: #758e7d;
+}
+
+#guardarBtn{
+    width: 150px;
+    height: 50px;
+    border-radius: 45px;
+    border: none;
+    background-color: #000000;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    display: block; 
+    margin: 17px auto; 
+    margin-top: 25px;
+}
+#guardarBtn:hover{
+    background-color: #758e7d;
+}
+
+/* animación pop-up de inputs */
+.popup {
+    animation: popup 0.4s ease;
+  }
+  
+  @keyframes popup {
+    0% {
+      transform: scale(0.9);
+      opacity: 0.5;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  /* contenedor de toasts */
+  #toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+  }
+  
+  /* estilo de cada toast */
+  .toast {
+    background-color: #000000;
+    color: #fff;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    opacity: 0;
+    transform: translateX(100%);
+    animation: slidein 0.5s forwards, fadeout 0.5s forwards 3s; /* entra y se va */
+  }
+  
+  @keyframes slidein {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeout {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  form {
+    margin: -22px 0;
+    max-width: 500px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #151515;
+    font-size: 16px;
+    font-family: "alfa slab one", sans-serif;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border 0.3s ease;
+  }
+  
+  input:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+  }
+  .welcome-text {
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: "alfa slab one", sans-serif;
+    margin-bottom: 20px;
+    color: #4a4a4a;
+  }
+  #welcome-message{
+    font-weight: bold;
+    font-family: "alfa slab one", sans-serif;
+    color: #000000;
+  }
+  
+  #user-name {
+    font-weight: bold;
+    font-family: "alfa slab one", sans-serif;
+    color: #000000;
+    margin-top: 20px;
+  }
+
+  #auth-section {
+  display: block; /* Allow it to be visible by default */
+}
+
+  #perfil-usuario {
+    position: relative;
+    cursor: pointer;
+    width: auto; /* Change from fixed width */
+    height: auto; /* Change from fixed height */
+    display: flex;
+    align-items: center;
+  }
+  
+  .icono-usuario {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  /* Dropdown styling */
+  .dropdown-contenido {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .dropdown-contenido a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .dropdown-contenido a:hover {
+    background-color: #f1f1f1;
+  }
+  
+  #perfil-usuario:hover .dropdown-contenido {
+    display: block;
+  }

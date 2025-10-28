@@ -5,18 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pagina intermedia</title>
   <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script type="module" src="../inicioSesion/login.js"></script>
+  <script type="module" src="./navbar.js"></script>
 </head>
 <body>
-  <header id="navbar">
-    <div id="logo">
-        <a href="/paginaPrincipal/index.html"><img src="/paginaPrincipal/logo.png" alt="logo"></a>
+  <header>
+    <div class="logo">
+      <a href="../paginaPrincipal/home.html"><img src="../paginaPrincipal/logo.png" alt="logo"></a>
     </div>
+<<<<<<< HEAD
     <nav id="nav-links">
       <a href="#">PRODUCTOS</a>
       <a href="#">BLOG</a>
       <a href="#">NOSOTROS</a>
       <a href="/inicioSesion/index.html">INICIAR SESION</a>
 
+=======
+    <nav>
+      <ul>
+        <li><a href="../paginaPrincipal/home.html">INICIO</a></li>
+        <li><a href="/paginaIntermedia/index.html">PRODUCTOS</a></li>
+        <li><a href="#">BLOG</a></li>
+        <li><a href="#">NOSOTROS</a></li>
+        <li id="auth-section"><a href="../inicioSesion/index.html">INICIAR SESION</a></li>
+        <li id="perfil-usuario">
+          <img src="../modificacionDatos/image copy.png" alt="Icono de usuario" class="icono-usuario">
+          <div class="dropdown-contenido">
+            <a href="../modificacionDatos/index.html">Mi Perfil</a>
+            <a href="../inicioSesion/index.html">Cerrar Sesión</a>
+          </div>
+        </li>
+      </ul>
+>>>>>>> 887244ed24d8813ebc5ba60478d144263d82e302
     </nav>
   </header>
 
@@ -25,19 +46,19 @@
       <h1>NUESTROS PRODUCTOS</h1>
       <div class="grid">
         <div class="card">
-          <a href="#"><img src="./imagenes/Camiseta hombre.jpg" alt="Camisetas Hombre"></a>
+          <a href="/pantallaTemporal/index.html"><img src="./imagenes/Camiseta hombre.jpg" alt="Camisetas Hombre"></a>
           <span>CAMISETAS<br>HOMBRE</span>
         </div>
         <div class="card">
-          <a href="#"><img src="./imagenes/Camiseta mujer.jpg" alt="Camisetas Mujer"></a>
+          <a href="./productosMujer.html"><img src="./imagenes/Camiseta mujer.jpg" alt="Camisetas Mujer"></a>
           <span>CAMISETAS<br>MUJER</span>
         </div>
         <div class="card">
-          <a href="#"><img src="./imagenes/Sweaters.jpg" alt="Sweaters"></a>
+          <a href="/pantallaTemporal/index.html"><img src="./imagenes/Sweaters.jpg" alt="Sweaters"></a>
           <span>SWEATERS</span>
         </div>
         <div class="card">
-          <a href="#"><img src="./imagenes/Busos.jpg" alt="Chompas"></a>
+          <a href="/pantallaTemporal/index.html"><img src="./imagenes/Busos.jpg" alt="Chompas"></a>
           <span>CHOMPAS</span>
         </div>
       </div>
@@ -52,7 +73,7 @@
       <p>Todos los derechos reservados.</p>
     </div>
     <div class="footer-logo">
-      <img src="/paginaPrincipal/logo.png" alt="Logo Medellín Parce">
+      <img src="../paginaPrincipal/logo.png" alt="Logo Medellín Parce">
     </div>
   </footer>
 </body>

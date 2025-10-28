@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificacion de datos</title>
+    <link rel="stylesheet" href="./style.css">
+    <script type="module" src="./modificarDatos.js"></script>
+</head>
+<body>
+    <header>
+    <div class="logo">
+        <a href="../paginaPrincipal/home.html"><img src="logo.png" alt="Medellín Parce Logo"></a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="../paginaPrincipal/home.html">INICIO</a></li>
+          <li><a href="/paginaIntermedia/index.html">PRODUCTOS</a></li>
+          <li><a href="#">BLOG</a></li>
+          <li><a href="#">NOSOTROS</a></li>
+          <div id="perfil-usuario">
+            <img src="./image copy.png" alt="Icono de usuario" class="icono-usuario">
+            <div class="dropdown-contenido">
+              <a href="modificacionDatos/index.html">Mi Perfil</a>
+              <a href="../inicioSesion/index.html">Cerrar Sesión</a>
+            </div>
+
+          </div>
+          
+        </ul>
+      </nav>
+    </header>
+  
+    <main>
+        <div class="datos-container"></div>
+        <p id="welcome-message" class="welcome-text">Hola <span id="user-name"></span></p>
+        <h1>Perfil de Usuario</h1>
+        <form action="modificarDatos" method="post">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" disabled>
+            <br>
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" name="apellido" disabled >
+            <br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" disabled>
+            <br>
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" id="telefono" name="telefono" disabled>
+            <br>
+            <button type="submit" id="editarBtn">Editar Perfil</button>
+            <button type="submit" id="guardarBtn">Guardar Cambios</button>
+        </form>
+        <div id="toast-container"></div>
+    </main>
+    <footer>
+        <div class="footer-info">
+          <p>Medellín Parce</p>
+          <p>Contacto: +57 305 2592493</p>
+          <p>Email: <a href="mailto:info.medellinparce@gmail.com">info.medellinparce@gmail.com</a></p>
+          <p>Todos los derechos reservados.</p>
+        </div>
+        <div class="footer-logo">
+          <img src="logo.png" alt="Logo Medellín Parce">
+        </div>
+      </footer>
+</body>
+</html>

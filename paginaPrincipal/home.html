@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medellín Parce</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="../inicioSesion/login.js"></script>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <a href="../paginaPrincipal/home.html"><img src="logo.png" alt="Medellín Parce Logo"></a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="home.html">INICIO</a></li>
+        <li><a href="../paginaIntermedia/index.html">PRODUCTOS</a></li>
+        <li><a href="#">BLOG</a></li>
+        <li><a href="#">NOSOTROS</a></li>
+        <li id="auth-section"><a href="../inicioSesion/index.html">INICIAR SESION</a></li>
+        <li id="perfil-usuario">
+          <img src="../modificacionDatos/image copy.png" alt="Icono de usuario" class="icono-usuario">
+          <div class="dropdown-contenido">
+            <a href="../modificacionDatos/index.html">Mi Perfil</a>
+            <a href="../inicioSesion/index.html">Cerrar Sesión</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Slogan -->
+  <section class="slogan">
+    <h2>PRENDAS DE PARCEROS PARA PARCEROS.</h2>
+  </section>
+
+  <!-- Imagen intermedia con overlay -->
+  <section class="banner-intermedio">
+    <img src="main.jpg" alt="Barrio de Medellín">
+    <div class="overlay-text">EL DISEÑO MÁS PAISA!!</div>
+  </section>
+
+  <!-- Sub-slogan -->
+  <section class="sub-slogan">
+    <h2>MEDELLIN PARCE UNA MARCA 100% PAISA.</h2>
+  </section>
+
+  <!-- Galería -->
+<section class="galeria">
+  <div class="grid-galeria">
+    <img src="../paginaIntermedia/imagenes/Camiseta hombre.jpg" alt="Foto 1">
+    <img src="../paginaIntermedia/imagenes/Camiseta mujer.jpg" alt="Foto 2">
+    <img src="../paginaIntermedia/imagenes/Sweaters.jpg" alt="Foto 3">
+    <img src="../paginaIntermedia/imagenes/Busos.jpg" alt="Foto 4">
+  </div>
+</section>
+
+<!-- Formulario -->
+<section class="formulario">
+  <form>
+    <h2>Registrate y obtén un 20% de descuento en tu primera compra!</h2>
+    <div class="form-group">
+      <label for="nombre">Nombre</label>
+      <input type="text" id="nombre" name="nombre" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Correo electrónico</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+    <div class="form-group">
+      <label for="celular">Celular</label>
+      <input type="phone" id='celular' name="celular" required>
+    </div>
+    <button type="submit">Enviar</button>
+  </form>
+</section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-info">
+      <p>Medellín Parce</p>
+      <p>Contacto: +57 305 2592493</p>
+      <p>Email: <a href="mailto:info.medellinparce@gmail.com">info.medellinparce@gmail.com</a></p>
+      <p>Todos los derechos reservados.</p>
+    </div>
+    <div class="footer-logo">
+      <img src="logo.png" alt="Logo Medellín Parce">
+    </div>
+  </footer>
+</body>
+</html>

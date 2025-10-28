@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categoría Mujer - Medellín Parce</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script type="module" src="../inicioSesion/login.js"></script>
+    <script src="cart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cartIcon = document.querySelector('.cart-icon-container');
+            const cartDropdown = document.querySelector('.cart-dropdown');
+
+            cartIcon.addEventListener('click', function(e) {
+                e.stopPropagation();
+                cartDropdown.classList.toggle('show');
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!cartDropdown.contains(e.target) && !cartIcon.contains(e.target)) {
+                    cartDropdown.classList.remove('show');
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+          <a href="../paginaPrincipal/home.html"><img src="../paginaPrincipal/logo.png" alt="logo"></a>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="../paginaPrincipal/home.html">INICIO</a></li>
+            <li><a href="/paginaIntermedia/index.html">PRODUCTOS</a></li>
+            <li><a href="#">BLOG</a></li>
+            <li><a href="#">NOSOTROS</a></li>
+            <li id="auth-section"><a href="../inicioSesion/index.html">INICIAR SESION</a></li>
+            <li id="perfil-usuario">
+              <img src="../modificacionDatos/image copy.png" alt="Icono de usuario" class="icono-usuario">
+              <div class="dropdown-contenido">
+                <a href="../modificacionDatos/index.html">Mi Perfil</a>
+                <a href="../inicioSesion/index.html">Cerrar Sesión</a>
+              </div>
+            </li>
+            <li class="cart-icon-container">
+              <i class="fas fa-shopping-cart cart-icon"></i>
+              <span class="cart-count">0</span>
+              <div class="cart-dropdown">
+                <div class="cart-content"></div>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </header>
+    <main class="main-content">
+        <h1 class="category-title">Colección Mujer</h1>
+
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="./imagenes/buzomujer.jpg" alt="Camiseta Mujer Urbana">
+                <h2 class="product-name">Chompas Mujer Urbana</h2>
+                <p class="product-price">$ 25.00</p>
+                <button class="add-to-cart-btn" onclick="addToCart('Chompas Mujer Urbana Medellín', 25.00)">Agregar</button>
+            </div>
+
+            <div class="product-card">
+                <img src="./imagenes/colorbuzo.jpg" alt="Camiseta Mujer Clásica">
+                <h2 class="product-name">Buzo Mujer</h2>
+                <p class="product-price">$ 22.50</p>
+                <button class="add-to-cart-btn" onclick="addToCart('Buzo Mujer', 22.50)">Agregar</button>
+            </div>
+
+            <div class="product-card">
+                <img src="./imagenes/variedad.jpg" alt="Camiseta Mujer Logo">
+                <h2 class="product-name">Camiseta Logo Medellín</h2>
+                <p class="product-price">$ 28.00</p>
+                <button class="add-to-cart-btn" onclick="addToCart('Camiseta Logo Medellín', 28.00)">Agregar</button>
+            </div>
+
+            </div>
+    </main>
+    <footer>
+        <div class="footer-info">
+          <p>Medellín Parce</p>
+          <p>Contacto: +57 305 2592493</p>
+          <p>Email: <a href="mailto:info.medellinparce@gmail.com">info.medellinparce@gmail.com</a></p>
+          <p>Todos los derechos reservados.</p>
+        </div>
+        <div class="footer-logo">
+          <img src="../paginaPrincipal/logo.png" alt="Logo Medellín Parce">
+        </div>
+      </footer>
+</body>
+</html>

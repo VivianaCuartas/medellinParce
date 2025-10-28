@@ -1,42 +1,87 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.querySelector('form');
-    
-    form.addEventListener('submit', function(event) {
-        event.preventDefault(); 
+import { Usuario } from '../formularioRegistro/logicaRegistro.js';
+
+const loginForm = document.getElementById('login-form');
+if (loginForm) {
+    loginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
         
-        const usernameInput = document.getElementById('username').value;
-        const passwordInput = document.getElementById('password').value;
-        
-        localStorage.setItem('user', usernameInput);
-        localStorage.setItem('password', passwordInput);
-        
-        let errorMsg = document.getElementById('error-message');
-        if (!errorMsg) {
-            errorMsg = document.createElement('p');
-            errorMsg.id = 'error-message';
-            errorMsg.style.color = 'red';
-            form.appendChild(errorMsg);
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        // Basic validation
+        if (username && password) {
+            // Create a user instance to use its login method
+            const usuario = new Usuario('', '', '', '');
+            const loggedUser = usuario.login(username, password);
+            
+            if (loggedUser) {
+                // Store user data and login state
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('userData', JSON.stringify(loggedUser));
+                localStorage.setItem('usuarioActivo', JSON.stringify(loggedUser));
+                
+                // Show welcome message as toast
+              
+                
+                // Redirect to home page
+                setTimeout(() => {
+                    window.location.href = '/paginaPrincipal/home.html';
+                }, 1500);
+            }
+        } else {
+            showToast('Please enter valid credentials', 'error');
         }
-        
-        import('./inicioSesion.js')
-            .then(module => {
-                window.user = usernameInput;
-                window.password = passwordInput;
-                window.userStorage = localStorage.getItem('user');
-                window.passwStorage = localStorage.getItem('password');
-                
-                const loginResult = module.inicioSesion();
-                
-                if (loginResult) {
-                    console.log("Login successful, redirecting...");
-                    window.location.href = 'home.html'; 
-                } else {
-                    errorMsg.textContent = 'Inicio de sesión fallido';
-                }
-            })
-            .catch(error => {
-                console.error('Error loading inicioSesion module:', error);
-                errorMsg.textContent = 'Error al cargar el módulo de inicio de sesión';
-            });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    
+    // Get UI elements
+    const authSection = document.getElementById('auth-section');
+    const perfilUsuario = document.getElementById('perfil-usuario');
+    
+    console.log('Login state:', isLoggedIn);
+    console.log('Auth section:', authSection);
+    console.log('Profile section:', perfilUsuario);
+    
+    if (isLoggedIn) {
+        // User is logged in
+        if (authSection) authSection.style.display = 'none';
+        if (perfilUsuario) {
+            perfilUsuario.style.display = 'block';
+            console.log('Profile should be visible now');
+        }
+    } else {
+        if (authSection) authSection.style.display = 'block';
+        if (perfilUsuario) perfilUsuario.style.display = 'none';
+    }
+    
+    const logoutLinks = document.querySelectorAll('#perfil-usuario .dropdown-contenido a:last-child');
+    logoutLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            // Clear auth data
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('userData');
+            localStorage.removeItem('usuarioActivo');
+            console.log('Logged out');
+        });
     });
 });
+
+function showToast(message, type) {
+    const toastContainer = document.getElementById('toast-container-mensaje');
+    if (!toastContainer) return;
+    
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    toast.textContent = message;
+    
+    toastContainer.appendChild(toast);
+   
+    setTimeout(() => {
+        toast.remove();
+    }, 3000);
+}
+
+export { showToast };

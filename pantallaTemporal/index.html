@@ -3,41 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Medellín Parce - Hombres</title>
+  <title>Medellín Parce</title>
   <link rel="stylesheet" href="style.css">
+  <script type="module" src="../inicioSesion/login.js"></script>
 </head>
 <body>
   <!-- Header -->
   <header>
     <div class="logo">
-      <a href="./index.html"><img src="logo.png" alt="Medellín Parce Logo"></a>
+      <a href="../paginaPrincipal/home.html"><img src="/paginaPrincipal/logo.png" alt="Medellín Parce Logo"></a>
     </div>
     <nav>
       <ul>
-        <li><a href="index.html">INICIO</a></li>
+        <li><a href="/paginaPrincipal/home.html">INICIO</a></li>
         <li><a href="/paginaIntermedia/index.html">PRODUCTOS</a></li>
         <li><a href="#">BLOG</a></li>
         <li><a href="#">NOSOTROS</a></li>
-        <li><a href="/inicioSesion/index.html">INICIAR SESION</a></li>
+        <li id="auth-section"><a href="../inicioSesion/index.html">INICIAR SESION</a></li>
+        <li id="perfil-usuario">
+          <img src="../modificacionDatos/image copy.png" alt="Icono de usuario" class="icono-usuario">
+          <div class="dropdown-contenido">
+            <a href="../modificacionDatos/index.html">Mi Perfil</a>
+            <a href="../inicioSesion/index.html">Cerrar Sesión</a>
+          </div>
+        </li>
       </ul>
     </nav>
   </header>
 
   <!-- Slogan -->
   <section class="slogan">
-    <h2>PRENDAS DE PARCEROS PARA PARCEROS.</h2>
+    <h2>PROXIMAMENTE.</h2>
   </section>
 
-  <!-- Imagen intermedia con overlay -->
-  <section class="banner-intermedio">
-    <img src="main.jpg" alt="Barrio de Medellín">
-    <div class="overlay-text">EL DISEÑO MÁS PAISA!!</div>
-  </section>
-
-  <!-- Sub-slogan -->
-  <section class="sub-slogan">
-    <h2>MEDELLIN PARCE UNA MARCA 100% PAISA.</h2>
-  </section>
 
   <!-- Footer -->
   <footer>
@@ -48,7 +46,7 @@
       <p>Todos los derechos reservados.</p>
     </div>
     <div class="footer-logo">
-      <img src="logo.png" alt="Logo Medellín Parce">
+      <img src="/paginaPrincipal/logo.png" alt="Logo Medellín Parce">
     </div>
   </footer>
 </body>
