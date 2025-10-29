@@ -90,27 +90,7 @@ function renderCarrito() {
   calcularTotales();
 }
 
-<<<<<<< HEAD
-function showToast(mensaje) {
-  const container = document.getElementById("toast-container");
-
-  const toast = document.createElement("div");
-  toast.classList.add("toast");
-  toast.textContent = mensaje;
-
-  container.appendChild(toast);
-
-  // eliminar el toast después de 4s (cuando termina la animación)
-  setTimeout(() => {
-    toast.remove();
-  }, 4000);
-}
-
-
-// Cambiar cantidad
-=======
 // Cambiar cantidad de un producto
->>>>>>> 887244ed24d8813ebc5ba60478d144263d82e302
 function cambiarCantidad(index, valor) {
   carrito[index].quantity += valor;
   if (carrito[index].quantity <= 0) carrito[index].quantity = 1;
@@ -206,28 +186,6 @@ document.getElementById("btn-finalizar").addEventListener("click", () => {
     showToast("⚠️ El carrito está vacío.");
     return;
   }
-<<<<<<< HEAD
-
-  // Simulamos un cliente
-  const cliente = {
-    nombre: "Juan Pérez",
-    documento: "123456789",
-    email: "juanperez@mail.com",
-    telefono: "3012345678"
-  };
-
-  // Creamos la orden usando la clase Orden (orden.js)
-  const numeroOrden = Date.now();
-  const orden = new Orden(numeroOrden, cliente, carrito);
-
-  orden.generarOrden(); // guarda en localStorage
-
-  const resumen = orden.mostrarResumen();
-  showToast(`✅ Orden #${resumen.numeroOrden} confirmada. Total: $${resumen.total.toLocaleString()}`);
-
-  carrito = []; // reiniciamos carrito
-  renderCarrito();
-=======
   
   const cliente = JSON.parse(localStorage.getItem("usuarioActivo"));
   
@@ -270,5 +228,4 @@ document.getElementById("btn-finalizar").addEventListener("click", () => {
 document.addEventListener("DOMContentLoaded", () => {
   cargarDatosCliente();
   loadCart();
->>>>>>> 887244ed24d8813ebc5ba60478d144263d82e302
 });
