@@ -65,6 +65,45 @@ function irADetalle(idProducto) {
 }
 
 // ============================================
+// FUNCIÓN PARA MOSTRAR MENSAJES
+// ============================================
+function mostrarMensaje(texto, tipo = 'success') {
+    const mensaje = document.getElementById('categoryMessage');
+    if (!mensaje) {
+        console.warn('No se encontró el elemento de mensaje');
+        return;
+    }
+    
+    mensaje.textContent = texto;
+    mensaje.className = `message ${tipo} show`;
+    
+    // Ocultar el mensaje después de 3 segundos
+    setTimeout(function() {
+        mensaje.classList.remove('show');
+    }, 3000);
+}
+
+// ============================================
+// FUNCIÓN PARA INTERCEPTAR AGREGAR AL CARRITO
+// ============================================
+function interceptarAgregarAlCarrito() {
+    // Obtener todos los botones de agregar al carrito
+    const botonesAgregar = document.querySelectorAll('.add-to-cart-btn');
+    
+    botonesAgregar.forEach(boton => {
+        boton.addEventListener('click', function(e) {
+            // Dejar que la función original se ejecute
+            // y luego mostrar el mensaje
+            setTimeout(function() {
+                const cartCount = document.querySelector('.cart-count');
+                const totalItems = cartCount ? cartCount.textContent : '0';
+                mostrarMensaje(`✓ Producto agregado al carrito (${totalItems} items)`, 'success');
+            }, 100);
+        });
+    });
+}
+
+// ============================================
 // CONFIGURAR EVENTOS AL CARGAR LA PÁGINA
 // ============================================
 document.addEventListener('DOMContentLoaded', function() {
@@ -95,4 +134,5 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log('Eventos de productos configurados');
     console.log(`${catalogoProductos.length} productos disponibles en el catálogo`);
+      interceptarAgregarAlCarrito(); 
 });

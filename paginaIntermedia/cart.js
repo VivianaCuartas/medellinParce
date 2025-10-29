@@ -54,12 +54,12 @@ function updateCartDisplay() {
         itemElement.innerHTML = `
             <span>${item.name}</span>
             <div class="cart-item-controls">
-                <button onclick="updateQuantity('${item.name}', ${item.quantity - 1})">-</button>
+                <button class="quantity-decrease-btn" data-name="${item.name}">-</button>
                 <span>${item.quantity}</span>
-                <button onclick="updateQuantity('${item.name}', ${item.quantity + 1})">+</button>
+                <button class="quantity-increase-btn" data-name="${item.name}">+</button>
             </div>
             <span>$${itemTotal.toFixed(2)}</span>
-            <button onclick="removeFromCart('${item.name}')" class="remove-btn">×</button>
+            <button class="remove-item-btn" data-name="${item.name}">×</button>
         `;
         cartContent.appendChild(itemElement);
     });
@@ -68,7 +68,7 @@ function updateCartDisplay() {
     totalElement.className = 'cart-total';
     totalElement.innerHTML = `
         <strong>Total: $${total.toFixed(2)}</strong>
-        ${total > 0 ? '<button onclick="checkout()" class="checkout-btn">Pagar</button>' : ''}
+        ${total > 0 ? '<button class="checkout-btn">Pagar</button>' : ''}
     `;
     cartContent.appendChild(totalElement);
 
@@ -78,6 +78,58 @@ function updateCartDisplay() {
         const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
         cartCount.textContent = itemCount;
         cartCount.style.display = itemCount > 0 ? 'block' : 'none';
+    }
+
+    // Agregar event listeners a los nuevos botones
+    attachCartButtonListeners();
+}
+
+// Nueva función para agregar event listeners
+function attachCartButtonListeners() {
+    // Botones de disminuir cantidad
+    document.querySelectorAll('.quantity-decrease-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const itemName = this.getAttribute('data-name');
+            const item = cart.find(i => i.name === itemName);
+            if (item) {
+                updateQuantity(itemName, item.quantity - 1);
+            }
+        });
+    });
+
+    // Botones de aumentar cantidad
+    document.querySelectorAll('.quantity-increase-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const itemName = this.getAttribute('data-name');
+            const item = cart.find(i => i.name === itemName);
+            if (item) {
+                updateQuantity(itemName, item.quantity + 1);
+            }
+        });
+    });
+
+    // Botones de eliminar
+    document.querySelectorAll('.remove-item-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const itemName = this.getAttribute('data-name');
+            removeFromCart(itemName);
+        });
+    });
+
+    // Botón de checkout
+    const checkoutBtn = document.querySelector('.checkout-btn');
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            checkout();
+        });
     }
 }
 
@@ -90,10 +142,19 @@ function checkout() {
         window.location.href = "../ordenCompra/index.html"; 
         // Ajusta la ruta según la estructura de carpetas
     } else {
-         showToast("⚠️ El carrito está vacío.");
+        alert("⚠️ El carrito está vacío.");
     }
 }
 
-
 // Initialize cart on page load
-document.addEventListener('DOMContentLoaded', loadCart);
+document.addEventListener('DOMContentLoaded', function() {
+    loadCart();
+    
+    // Prevenir que el dropdown se cierre al hacer clic dentro
+    const cartDropdown = document.querySelector('.cart-dropdown');
+    if (cartDropdown) {
+        cartDropdown.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    }
+});
