@@ -11,7 +11,7 @@
 }
 
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Arial Black', Arial, sans-serif;
   font-size: 16px;
   margin: 0;
   background: #fff;
@@ -25,7 +25,7 @@ main {
   flex: 1;
 }
 
-/* Header / Navbar - IGUAL QUE PÁGINA DE PRODUCTOS */
+/* Header / Navbar */
 header {
   display: flex;
   justify-content: space-between;
@@ -33,7 +33,7 @@ header {
   padding: 20px 40px;
   background: white;
   border-bottom: 1px solid #eee;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 header .logo img {
@@ -60,13 +60,13 @@ nav ul li a:hover {
 
 /* Profile icon styles */
 #auth-section {
-  display: none; /* Ocultar por defecto - mostrar solo si NO hay sesión */
+  display: block;
 }
 
 #perfil-usuario {
   position: relative;
   cursor: pointer;
-  display: block; /* Mostrar por defecto - ocultar solo si NO hay sesión */
+  display: none;
 }
 
 .icono-usuario {
@@ -104,7 +104,7 @@ nav ul li a:hover {
   display: block;
 }
 
-/* Cart styles - IGUAL QUE PÁGINA DE PRODUCTOS */
+/* Cart styles */
 .cart-icon-container {
   position: relative;
   margin-left: 15px;
@@ -215,6 +215,7 @@ nav ul li a:hover {
 }
 
 #factura {
+  font-family: Arial, Helvetica, sans-serif;
   background: rgba(90, 106, 95, 0.35);
   border-radius: 15px;
   padding: 25px;

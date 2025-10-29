@@ -22,10 +22,10 @@ if (loginForm) {
                 
                 // Show welcome message as toast
               
-                
+    
                 // Redirect to home page
                 setTimeout(() => {
-                    window.location.href = '/paginaPrincipal/home.html';
+                    window.location.href = '../paginaPrincipal/home.html';
                 }, 1500);
             }
         } else {

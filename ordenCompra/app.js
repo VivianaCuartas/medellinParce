@@ -151,6 +151,8 @@ function cargarDatosCliente() {
     document.getElementById("cliente-info").innerHTML = `
       <h3>👨🏻 Información del cliente</h3>
       <p><em>No se encontró usuario activo</em></p>
+      <p>Para finalizar la compra <strong>regístrate</strong> o <strong>inicia sesión</strong>:</p>
+      <p><a href="../formularioRegistro/registro.html">Regístrate</a> o <a href="../inicioSesion/index.html">Inicia sesión</a></p>
     `;
     return;
   }
@@ -188,7 +190,18 @@ document.getElementById("btn-finalizar").addEventListener("click", () => {
   }
   
   const cliente = JSON.parse(localStorage.getItem("usuarioActivo"));
-  
+
+  // Verificar que exista sesión activa antes de permitir finalizar
+  const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+  if (!isLoggedIn || !cliente) {
+    showToast('Registrate o inicia sesión para finalizar la compra');
+    const clienteInfo = document.getElementById('cliente-info');
+    if (clienteInfo && !clienteInfo.innerHTML.includes('Regístrate')) {
+      clienteInfo.innerHTML += `<p><a href="../formularioRegistro/registro.html">Regístrate</a> o <a href="../inicioSesion/index.html">Inicia sesión</a> para finalizar la compra.</p>`;
+    }
+    return; // Bloquear la finalización si no está autenticado
+  }
+
   // AQUÍ se confirma e incrementa el número de orden
   const numeroOrden = confirmarNumeroOrden();
   

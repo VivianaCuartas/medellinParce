@@ -198,7 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (nuevoUsuario.registrar()) {
                 // Redirect to login page after successful registration
                 setTimeout(() => {
-                    window.location.href = "/inicioSesion/index.html";
+                    window.location.href = "../inicioSesion/index.html";
                 }, 2000);
             }
 
